@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class _Shield : _Item
+{
+    protected int sh_Shield;
+    protected int sh_Recharge;
+
+    public int sh_Get_Shield()
+    {
+        return sh_Shield;
+    }
+
+    public int sh_Get_Recharge()
+    {
+        return sh_Recharge;
+    }
+
+    protected void sh_Set_Shield(int new_S)
+    {
+        sh_Shield = new_S;
+    }
+
+    protected void sh_Set_Recharge(int new_R)
+    {
+        sh_Recharge = new_R;
+    }
+}
