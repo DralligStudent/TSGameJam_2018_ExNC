@@ -28,25 +28,21 @@ public class _Ship : ScriptableObject
 
     //values for each ship
     [SerializeField]
-    protected int s_Max_Health; //Hull Health Value
+    protected int s_Max_Health, s_Size, s_Agility, s_Weight, s_FP_Value; //Hull Health Value, Size value (millions of m^3), Agility value, Weight Value (thousands of kg), the Ships fleet point value
+    [SerializeField]
+    protected _Class s_Class; //Class of the ship
+
     protected int s_Cur_Health; //Current Hull Health
     protected int s_Damage_Taken; //to count damage outside of battle
     protected int s_Shield; //Shield Health Value
     protected float s_Speed; // Speed Value
     protected int s_Xp; //XP value
     protected int s_Level; //Current Ship Level
-    protected int s_Size; //Size value (millions of m^3)
-    protected int s_Agility; //Agility value
-    protected int s_Weight; //Weight Value (thousands of kg)
     protected int s_Shield_Rate; //Amount the shields recharges per tick
-    protected int s_FP_Value; //the Ships fleet point value
-    protected _Class s_Class; //Class of the ship
-
     protected int s_Max_Wep; //max number of weapon slots on ship
     protected int s_Max_Sh; // max number of shield slots on ship
     protected int s_Max_Eng; //max number of engine slots on ship
     protected int s_Max_Equip; // max number of equipment slots on ship
-
     protected int s_Power_Level; //a rating for the ship to be used when determining fleet strength
 
     protected void s_Calc_Shields()
@@ -89,14 +85,11 @@ public class _Ship : ScriptableObject
         s_Size = _size;
         s_Weight = _weight;
         s_Agility = _agility;
-
         s_Max_Wep = _max_wep;
         s_Max_Sh = _max_shield;
         s_Max_Eng = _max_eng;
         s_Max_Equip = _max_equip;
-
         s_Set_Arrays(_max_eng, _max_shield, s_Max_Wep, _max_equip);
-
         s_Cur_Health = s_Max_Health - s_Damage_Taken;
     }
 
