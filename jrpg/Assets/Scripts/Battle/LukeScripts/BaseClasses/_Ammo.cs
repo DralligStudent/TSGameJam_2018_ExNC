@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public abstract class _Ammo : ScriptableObject
 {
     protected enum a_enum_Type //defines the weapon that the ammo can be used inside

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public abstract class _Engine : ScriptableObject
 {
     protected enum e_Class_Enum

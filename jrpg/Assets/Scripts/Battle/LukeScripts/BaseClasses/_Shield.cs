@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public abstract class _Shield : ScriptableObject
 {
     [SerializeField]
