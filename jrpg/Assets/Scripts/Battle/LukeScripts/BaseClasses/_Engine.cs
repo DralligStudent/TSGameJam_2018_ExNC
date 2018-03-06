@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class _Engine : _Item
+public abstract class _Engine : ScriptableObject
 {
     protected enum e_Class_Enum
     {
@@ -13,8 +13,9 @@ public abstract class _Engine : _Item
         e_Capital
     };
 
-    protected float e_Power;
-    protected float e_Boost;
+    [SerializeField]
+    protected float e_Power, e_Boost; //Engine output, engine boost value
+    [SerializeField]
     e_Class_Enum e_Class;
 
     public float e_Get_Power()

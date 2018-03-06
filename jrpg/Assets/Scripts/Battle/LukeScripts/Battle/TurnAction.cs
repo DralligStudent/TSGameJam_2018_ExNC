@@ -21,21 +21,21 @@ public class TurnAction : MonoBehaviour
     {
         c_Ship = active_Ship;
         t_Ship = target_Ship;
-        c_Item = a_Weapon;
+        //c_Item = a_Weapon;
         c_Action = action_Type.Weapon;
     }
 
     public TurnAction(GameObject active_Ship, _Shield a_Shield)
     {
         c_Ship = active_Ship;
-        c_Item = a_Shield;
+        //c_Item = a_Shield;
         c_Action = action_Type.Shield;
     }
 
     public TurnAction(GameObject active_Ship, _Engine a_Engine)
     {
         c_Ship = active_Ship;
-        c_Item = a_Engine;
+        //c_Item = a_Engine;
         c_Action = action_Type.Engine;
     }
 
@@ -58,7 +58,7 @@ public class TurnAction : MonoBehaviour
     {
 		
 	}
-
+    /*
     public void Action()
     {
         switch (c_Action)
@@ -90,18 +90,18 @@ public class TurnAction : MonoBehaviour
             case action_Type.Shield:
                 //_Shield cur_Shield = (_Shield)c_Item;
                 /*IMPLEMENT FUNCTIONALITY TO REGEN SHIELDS*/
-                break;
+               /* break;
 
-            case action_Type.Engine:
+            case action_Type.Engine:*/
                 /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR AGILITY BOOST THROUGH GREATER ENGINE POWER*/
-                break;
+               /* break;
 
-            case action_Type.Equipment:
-                /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR SPECIAL MOVES*/
+            case action_Type.Equipment:*/
+                /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR SPECIAL MOVES*//*
                 break;
 
             default:
                 break;
         }
-    }
+    }*/
 }

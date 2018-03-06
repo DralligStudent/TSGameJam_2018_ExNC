@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class _Shield : _Item
+public abstract class _Shield : ScriptableObject
 {
-    protected int sh_Shield;
-    protected int sh_Recharge;
+    [SerializeField]
+    protected int sh_Shield, sh_Recharge; //The shield health value, the shield recharge rate
 
     public int sh_Get_Shield()
     {
