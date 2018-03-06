@@ -14,7 +14,7 @@ public class BattleManager : MonoBehaviour
     public enum attack_Choice
     {
         A = 0,
-        B = 1,
+        B,
         C,
         D
     };
