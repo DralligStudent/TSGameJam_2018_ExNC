@@ -9,8 +9,8 @@ public class InventoryListWindow : MonoBehaviour {
     public GameObject content;
     public ToggleGroup itemSlotToggleGroup;
 
-    private int xPos;
-    private int yPos;
+    private int xPos = 0;
+    private int yPos = 0;
     private GameObject itemSlot;
 
 	// Use this for initialization
