@@ -15,9 +15,9 @@ public class NPCMoveOnLine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (oneToTwo)
+        if (oneToTwo)//checks the direction of the object
         {
-            if (Mathf.Abs(Position2.z - transform.position.z) > Mathf.Abs(Position2.x - transform.position.x))
+            if (Mathf.Abs(Position2.z - transform.position.z) > Mathf.Abs(Position2.x - transform.position.x))//figures out if its further away in the x or z axis (currently stupidly flickers between rotations if not on a cardinal line)
             {
                 if (transform.position.z < Position2.z)
                 { 
@@ -84,7 +84,7 @@ public class NPCMoveOnLine : MonoBehaviour {
 
         }
 
-        if (Mathf.Abs(Position2.z - transform.position.z) < 0.1f && Mathf.Abs(Position2.x - transform.position.x) < 0.1f)
+        if (Mathf.Abs(Position2.z - transform.position.z) < 0.1f && Mathf.Abs(Position2.x - transform.position.x) < 0.1f)//changes direction of movement if object reaches an endpoint
         {
             oneToTwo = false;
         }
@@ -95,7 +95,7 @@ public class NPCMoveOnLine : MonoBehaviour {
 
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected() // allows you to see the path in the unity editor
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Position1, Position2);
