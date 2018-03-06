@@ -20,7 +20,7 @@ public class _Ship : ScriptableObject
     public _Shield[] s_Shields;
     public _Weapon[] s_Weapons;
     public _Equipment[] s_Equipment;
-    //temporarry storage for array stuff
+    //temporarry storage for array stuff, may be null now
     private _Engine[] p_s_Engine;
     private _Shield[] p_s_Shields;
     private _Weapon[] p_s_Weapons;
