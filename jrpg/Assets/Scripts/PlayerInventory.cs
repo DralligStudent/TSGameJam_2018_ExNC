@@ -67,22 +67,31 @@ public class Inventory : MonoBehaviour {
     }
 
 
-
+    //Returns a dictionary with the item's name as the key, and (in theory) its index in the inventory as the value.
+    //You can use that index to access that specific item.
+    IDictionary<string, int> DisplayInven()
     {
+        IDictionary<string, int> listout = new Dictionary<string, int>();
         switch (inventoryType)
         {
             case (int)InvenKeys.e_perk:
+                for (int i =0; i<perkInven.Count; i++)
                 {
+                    listout.Add(new KeyValuePair<string, int>(perkInven[i].name, i));
                 }
                 return listout;
                 //break;
             case (int)InvenKeys.e_ship:
+                for (int i = 0; i < perkInven.Count; i++)
                 {
+                    listout.Add(new KeyValuePair<string, int>(shipInven[i].name, i));
                 }
                 return listout;
                 //break;
             case (int)InvenKeys.e_gun:
+                for (int i = 0; i < gunInven.Count; i++)
                 {
+                    listout.Add(new KeyValuePair<string, int>(gunInven[i].name, i));
                 }
                 return listout;
                 //break;
@@ -92,6 +101,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //Use the index from DisplayInven() to make sure the correct item is selected.
     void DeleteInvenItem(int selectedItemIndex)
     {
         switch (inventoryType)
@@ -132,6 +142,8 @@ public class Inventory : MonoBehaviour {
 
     }
 
+    //Overloaded fuctions to add items to their specific inventories.
+    //Could be improved via inheritance and interfaces? Ask tutors
     void AddItem(Perk other)
     {
         if (inventoryType == (int)InvenKeys.e_perk)
@@ -231,18 +243,18 @@ public class Inventory : MonoBehaviour {
         }
         DontDestroyOnLoad(this);
 
+
+    }
+
+    // Use this for initialization
+    void Start () {
         //This populates the inventory reference database. Don't touch.
         InvenRef.Add(new KeyValuePair<string, int>("Default", (int)InvenKeys.e_default));
         InvenRef.Add(new KeyValuePair<string, int>("Perks", (int)InvenKeys.e_perk));
         InvenRef.Add(new KeyValuePair<string, int>("Ships", (int)InvenKeys.e_ship));
         InvenRef.Add(new KeyValuePair<string, int>("Guns", (int)InvenKeys.e_gun));
     }
-
-    // Use this for initialization
-    void Start () {
 	
-	}
-	    
 	// Update is called once per frame
 	void Update () {
 		
