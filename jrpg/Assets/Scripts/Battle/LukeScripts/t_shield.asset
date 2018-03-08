@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3c6a16f53e0084b8d96abe8e326205, type: 3}
   m_Name: t_shield
   m_EditorClassIdentifier: 
-  sh_Shield: 0
-  sh_Recharge: 0
+  sh_Shield: 50
+  sh_Recharge: 10

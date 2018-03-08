@@ -14,4 +14,4 @@ MonoBehaviour:
   a_Type: 0
   a_Shield_Bias: 1
   a_Hull_Bias: 1
-  a_Damage: 0
+  a_Damage: 20

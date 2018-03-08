@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79534918ba342a34cbc4b7f59cd339fc, type: 3}
   m_Name: Wep1
   m_EditorClassIdentifier: 
-  w_Damage: 0
+  w_Damage: 1.333
   w_Class: 0
   w_Type: 0
-  w_Ammo: {fileID: 0}
+  w_Ammo: {fileID: 11400000, guid: 2654b558c52ab074c8042d5c8b23f65e, type: 2}

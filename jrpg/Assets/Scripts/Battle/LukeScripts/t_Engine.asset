@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586111f2605b6fa47a6f470f4d5d1bcd, type: 3}
   m_Name: t_Engine
   m_EditorClassIdentifier: 
-  e_Power: 0
-  e_Boost: 0
+  e_Power: 100
+  e_Boost: 1.234
   e_Class: 0
