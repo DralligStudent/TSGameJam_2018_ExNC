@@ -10,7 +10,10 @@ public class BattleManager : MonoBehaviour
     public bool isActive;
     protected TurnAction[] Turns;
     public _Ship[] Ship_Array;
+    public _Ship active_Ship;
 
+
+    /*
     public enum attack_Choice
     {
         A = 0,
@@ -22,7 +25,7 @@ public class BattleManager : MonoBehaviour
     public enum defense_Choice
     {
         A = 0,
-        B,
+        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS
         C,
         D
     };
@@ -33,7 +36,9 @@ public class BattleManager : MonoBehaviour
         B,
         C,
         D
-    };
+    };*/
+
+
     /*
     _Ship rat;
     _Ship mouse;
@@ -47,9 +52,10 @@ public class BattleManager : MonoBehaviour
 
     // Use this for initialization
     void Start()
-    {
+    { /*
         Turns = new TurnAction[1];
         Ship_Array = new _Ship[2];
+        */
         //rat = GameObject.Find("Rat").GetComponent<Rat_Ship>();
         //mouse = GameObject.Find("Mouse").GetComponent<Rat_Ship>();
         /*
@@ -94,6 +100,22 @@ public class BattleManager : MonoBehaviour
 
     void b_Set_Turn()
     {
+        /*
+         * Set the active ship
+         */
+
+        /*
+         * Take the option for the ship
+         * 
+         * 
+         */
+
+        /*
+         * Create a turnaction and add to the que of turns.
+         */
+
+
+        
         //var i_Choice = 
 
         //switch (i_Choice)

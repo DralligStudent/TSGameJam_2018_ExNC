@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public abstract class _Weapon : ScriptableObject
+public class _Weapon : ScriptableObject
 {
+    [Tooltip("A weapon Multiplier, BE CAREFUL WHEN SETTING THIS VALUE")]
     [SerializeField]
     protected float w_Damage;
     protected enum w_Class_Enum

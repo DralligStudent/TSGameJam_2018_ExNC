@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public abstract class _Shield : ScriptableObject
+public class _Shield : ScriptableObject
 {
     [SerializeField]
     protected int sh_Shield, sh_Recharge; //The shield health value, the shield recharge rate
