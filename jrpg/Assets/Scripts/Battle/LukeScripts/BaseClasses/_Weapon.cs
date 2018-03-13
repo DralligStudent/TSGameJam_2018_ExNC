@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class _Weapon : _Item
+[CreateAssetMenu]
+public class _Weapon : ScriptableObject
 {
+    [Tooltip("A weapon Multiplier, BE CAREFUL WHEN SETTING THIS VALUE")]
+    [SerializeField]
     protected float w_Damage;
     protected enum w_Class_Enum
     {
@@ -22,8 +25,9 @@ public abstract class _Weapon : _Item
         w_Arti
     };
 
+    [SerializeField]
     protected w_Class_Enum w_Class;
-
+    [SerializeField]
     protected w_Type_Enum w_Type;
 
     public _Ammo w_Ammo;

@@ -11,8 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276a426cb43dffb41835e288529428a5, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: 
-  s_Engine: []
-  s_Shields: []
-  s_Weapons: []
+  s_Engine:
+  - {fileID: 11400000, guid: 2bd1377ee82346b4080dc8e8f51ef073, type: 2}
+  s_Shields:
+  - {fileID: 11400000, guid: 57718a80e71f3124281b50b282a71816, type: 2}
+  s_Weapons:
+  - {fileID: 11400000, guid: 9229986bc83112240b8ba3f46ca2180a, type: 2}
   s_Equipment: []
-  s_Max_Health: 0
+  s_WHAT: {fileID: 11400000}
+  s_Max_Health: 50
+  s_Size: 20
+  s_Agility: 10
+  s_Weight: 10
+  s_FP_Value: 5
+  s_Class: 0

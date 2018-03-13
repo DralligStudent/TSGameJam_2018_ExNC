@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class _Ammo : MonoBehaviour
+[CreateAssetMenu]
+public class _Ammo : ScriptableObject
 {
     protected enum a_enum_Type //defines the weapon that the ammo can be used inside
     {
@@ -12,6 +13,7 @@ public abstract class _Ammo : MonoBehaviour
         _Arti
     };
 
+    [SerializeField]
     protected a_enum_Type a_Type;
 
     protected void a_Set_Type(a_enum_Type n_Type)
@@ -19,14 +21,17 @@ public abstract class _Ammo : MonoBehaviour
         a_Type = n_Type;
     }
 
-    protected float a_Shield_Bias = 1.0f; //out of 0 to 2, shield bias and hull bias must ALWAYS add up to 2
-    protected float a_Hull_Bias = 1.0f;
+    [Tooltip("Biases must add up to 2.0")]
+    [SerializeField]
+    protected float a_Shield_Bias = 1.0f, a_Hull_Bias = 1.0f; //out of 0 to 2, shield bias and hull bias must ALWAYS add up to 2
+    
+    [SerializeField]
     protected int a_Damage; //Actual Damage Value
 
     protected void a_Set_Bias(float x, float y)
     {
         float z = x + y;
-        if (z >= 2.001)//ensure to catch floating point errors
+        if (z >= 2.001 || z <= 1.999)//ensure to catch floating point errors
         {
             
             Debug.Log("ERROR, BIAS INCORRECT");
