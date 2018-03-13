@@ -12,8 +12,8 @@ public class PreBattleState : MonoBehaviour {
 
     //Static object creation.
     public static PreBattleState m_PreBattleState;
-    //Player ship inventory/inventory.
-    public GameObject playerHanger;
+    public gameObject battleSystem;
+
     //GameState machine will toggle this bool. Meant to keep the class from running the update loop needlessly outside of pre-battle.
     public static bool isPreBattleActive = false;
     //Since this class is static, awake/start only run once, ever. We only want some things run once a battle for setup. This bool helps control that.
@@ -24,25 +24,15 @@ public class PreBattleState : MonoBehaviour {
     private int commandLevel;
     private int fleetPoints;
 
+    public int formationIndex;
+    private int inventoryIndex;
+
     int fleetSize = 5;
 
-    //Container for fleet formations?
-    IDictionary<int, int[]> formations = new Dictionary<int, int[]>();
-
-    //temp container for fleets.
-    int[] formationSetup = new int[5];
     //Container of key values that is passed to the battle system.
-    //These key values will be references to the player's hanger, to let the battle system know which ships to put into play.
+    //The index will ALSO refer to the formation slot used.
+    //The values will be references to the index in the player's ship inventory, to let the battle system know which ships to put into play.
     int[] battleFormation = new int[5];
-
-    //IDictionary<int, Ship> playerShips = new Dictionary<int, Ship>();
-    /*
-    IDictionary<int, string> rowCapital;
-    IDictionary<int, string> rowBattleship;
-    IDictionary<int, string> rowCruiser;
-    IDictionary<int, string> rowDestroyer;
-    IDictionary<int, string> rowFighter;
-    */
 
     //Since this class/script is meant to hold data in-between other happenings/levels, we don't want it destroyed.
     //Singleton design.
@@ -60,6 +50,22 @@ public class PreBattleState : MonoBehaviour {
 
     }
 	
+    void setBattleFormation()
+    {
+        battleFormation[formationIndex] = inventoryIndex;
+    }
+
+    //UI can call this function with a send message.
+    void setFormationIndex(int newFormationIndex)
+    {
+        formationIndex = newFormationIndex;
+    }
+
+    void setInventoryIndex()
+    {
+        inventoryIndex = newInventoryIndex;
+    }
+
     void CalcFleetPoints()
     {
         //Placeholder values.
@@ -116,6 +122,8 @@ public class PreBattleState : MonoBehaviour {
         {
             //Send relevent information to battle system/GameState
             //Structure of Ships?
+            battleSystem.SendMessage("SetFormation", formationInfo);
+
 
             isPreBattleActive = false;
             isReady = false;

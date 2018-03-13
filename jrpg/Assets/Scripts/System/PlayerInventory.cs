@@ -8,10 +8,15 @@ public class Inventory : MonoBehaviour {
     //What should we do for other inventories? Random generation? Will they be saved?
     //Temp idea: Generate shop inventories based on level/rep/other factors. They are not saved, "Stock" is destroyed after the player leaves.
     //However, shops can only be accessed on a timer.(?)
+
+    //To use: call SetInven("Inventory name"), then call DisplayInven().
+    //From there, you can use a dictionary function to get the names of items or their index in the inventories.
+    //You can use that index with other functions in the inventory.
+
     public static Inventory m_Player_Inventory;
     public Inventory m_inventory;
 
-    public static bool isPlayerInven;
+    public bool isPlayerInven;
 
     //Enum for safer access of inventory elements. e_defualt should always remain as the first entry for error handling reasons (since that makes it 0).
     public enum InvenKeys {
@@ -66,6 +71,30 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //A quick getter function for retriving a specific inventory item if its location is already known and type is already selected.
+    void GetInvenItem(int invenIndex)
+    {
+        switch (inventoryType)
+        {
+            case (int)InvenKeys.e_perk:
+
+            break;
+            case (int)InvenKeys.e_ship:
+                for (int i = 0; i < perkInven.Count; i++)
+                {
+
+                }
+            break;
+            case (int)InvenKeys.e_gun:
+                for (int i = 0; i < gunInven.Count; i++)
+                {
+
+                }
+            break;
+            default:
+                break;
+        }
+    }
 
     //Returns a dictionary with the item's name as the key, and (in theory) its index in the inventory as the value.
     //You can use that index to access that specific item.
@@ -141,6 +170,16 @@ public class Inventory : MonoBehaviour {
         }
 
     }
+    Perk AccessPerk(int selectedItemIndex)
+    {
+
+        return perkInven[selectedItemIndex];
+    }
+    Ship AccessShip(int selectedItemIndex)
+    {
+
+    }
+
 
     //Overloaded fuctions to add items to their specific inventories.
     //Could be improved via inheritance and interfaces? Ask tutors
