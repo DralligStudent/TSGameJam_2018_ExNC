@@ -22,10 +22,11 @@ public class _Ship : ScriptableObject
     public _Equipment[] s_Equipment;
     public ScriptableObject s_WHAT;
     //temporarry storage for array stuff, may be null now
+    /*
     private _Engine[] p_s_Engine;
     private _Shield[] p_s_Shields;
     private _Weapon[] p_s_Weapons;
-    private _Equipment[] p_s_Equipment;
+    private _Equipment[] p_s_Equipment;*/
 
     //values for each ship
     [SerializeField]
@@ -40,14 +41,17 @@ public class _Ship : ScriptableObject
     protected int s_Xp; //XP value
     protected int s_Level; //Current Ship Level
     protected int s_Shield_Rate; //Amount the shields recharges per tick
+    protected int s_Evasivness;
+    /*
     protected int s_Max_Wep; //max number of weapon slots on ship
     protected int s_Max_Sh; // max number of shield slots on ship
     protected int s_Max_Eng; //max number of engine slots on ship
-    protected int s_Max_Equip; // max number of equipment slots on ship
+    protected int s_Max_Equip; // max number of equipment slots on ship*/
     protected int s_Power_Level; //a rating for the ship to be used when determining fleet strength
 
     protected void s_Calc_Shields()
     {
+        
         int t_Shield_V = 0;
         int t_Shield_R = 0;
         foreach (_Shield Sh in s_Shields)
@@ -57,8 +61,6 @@ public class _Ship : ScriptableObject
                 t_Shield_V += Sh.sh_Get_Shield();//get shield value shield
                 t_Shield_R += Sh.sh_Get_Recharge();//get the recharge rate of the shield
             }
-
-
         }
         s_Shield = t_Shield_V; //set shield value
         s_Shield_Rate = t_Shield_R; //set recharge rate
@@ -79,6 +81,12 @@ public class _Ship : ScriptableObject
         s_Speed = n_speed; //set speed
     }
 
+    protected void s_Calc_Evas()
+    {
+        s_Evasivness = s_Size / s_Agility; //when answer evase = size ie 20/1 = 20, its a guarenteed hit. Agility is num 1-10, so its a matter from 0% to 90% chance to dodge.
+        s_Evasivness = s_Size / s_Evasivness; //Actual number is the % chance of hit
+    }
+    /*
     protected void s_Calc_Values(int _health, int _size, int _agility, int _weight, int _max_wep, int _max_shield, int _max_eng, int _max_equip)
     {
         //this is the first function that should be called inside of a ship, setting the vital values for each of the following attributes
@@ -93,7 +101,8 @@ public class _Ship : ScriptableObject
         s_Set_Arrays(_max_eng, _max_shield, s_Max_Wep, _max_equip);
         s_Cur_Health = s_Max_Health - s_Damage_Taken;
     }
-
+    */
+    /*
     protected void s_Call() //output all of the values in the ship to the debug
     {
         Debug.Log("Health = " + s_Cur_Health);
@@ -105,7 +114,8 @@ public class _Ship : ScriptableObject
         Debug.Log("Weight = " + s_Weight);
         Debug.Log("Shiled Rate = " + s_Shield_Rate);
     }
-
+    */
+    /*
     protected void s_Set_Arrays(int _En, int _Sh, int _W, int _Eq)
     {
         //this should be the second function called within a ship OR if we have the ability to modify a ships core values.
@@ -134,7 +144,7 @@ public class _Ship : ScriptableObject
             s_Equipment = new _Equipment[_Eq];
         }
     }
-
+    */
     /*
     protected void s_Calc_PLevel()
     {
@@ -177,4 +187,9 @@ public class _Ship : ScriptableObject
     {
         return s_Speed;
     }
+    /*
+    public void s_outOfBattle_Health()
+    {
+            Worry about this at end of battles: Ship maintains current state of damage in overworld, so use this function to do so.
+    }*/
 }

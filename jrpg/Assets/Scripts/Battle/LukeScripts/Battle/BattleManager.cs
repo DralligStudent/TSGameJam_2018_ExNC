@@ -5,18 +5,20 @@ using System;
 
 public class BattleManager : MonoBehaviour
 {
+    /*
     public PlayerFleet Player;
-    public EnemyFleet Enemy;
+    public EnemyFleet Enemy;                        //IS FLEET NEEDED?
+    */
     public bool isActive;
     protected TurnAction[] Turns;
-    public _Ship[] Ship_Array;
-    public _Ship active_Ship;
-
+    public GameObject[] Ship_Array;
+    public GameObject active_Ship;
 
     /*
     public enum attack_Choice
     {
-        A = 0,
+        Null = 0,
+        A,
         B,
         C,
         D
@@ -24,7 +26,8 @@ public class BattleManager : MonoBehaviour
 
     public enum defense_Choice
     {
-        A = 0,
+        Null = 0,
+        A,
         B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS
         C,
         D
@@ -32,7 +35,8 @@ public class BattleManager : MonoBehaviour
 
     public enum equipment_Choice
     {
-        A = 0,
+        Null = 0,
+        A,
         B,
         C,
         D
@@ -46,8 +50,9 @@ public class BattleManager : MonoBehaviour
 
     public BattleManager(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
     {
+        /*
         Player = p_Fleet;
-        Enemy = e_Fleet;
+        Enemy = e_Fleet;*/
     }
 
     // Use this for initialization
@@ -84,9 +89,13 @@ public class BattleManager : MonoBehaviour
 
 
 
-    void b_Get_Weps(_Ship c_Ship)
+    void b_Get_Weps(GameObject c_Ship)
     {
-
+        foreach (_Weapon c_wep in c_Ship.GetComponent<_Ship>().s_Weapons)
+        {
+            //c_wep. (Set the weapons in UI)
+        }
+        
     }
 
     // Update is called once per frame
@@ -101,18 +110,23 @@ public class BattleManager : MonoBehaviour
     void b_Set_Turn()
     {
         /*
-         * Set the active ship
+         * Set the active ship in ui
          */
+         //Active ship should already be set to the next ship in the speed list.
+
 
         /*
-         * Take the option for the ship
-         * 
+         * Take the option for the ship 
+         * Some Ui code for selecting the thing
          * 
          */
+
+
 
         /*
          * Create a turnaction and add to the que of turns.
          */
+         
 
 
         
@@ -126,5 +140,13 @@ public class BattleManager : MonoBehaviour
         int x; //define its position
         Turns[x] = n_Turn; //add to array of turns
         */
+    }
+
+    void b_Speed_Sort()
+    {
+        /*
+         * This is where the sorting of the ship speed should be done. WWOW What a task
+         * 
+         */
     }
 }

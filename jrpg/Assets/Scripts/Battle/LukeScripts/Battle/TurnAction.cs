@@ -6,7 +6,11 @@ public class TurnAction : MonoBehaviour
 {
     GameObject c_Ship;
     GameObject t_Ship;
-    _Item c_Item;
+    _Weapon c_Wep;
+    _Shield c_Shield;
+    _Engine c_Eng;
+    _Equipment c_Equ;
+
     enum action_Type
     {
         Weapon = 0,
@@ -21,21 +25,21 @@ public class TurnAction : MonoBehaviour
     {
         c_Ship = active_Ship;
         t_Ship = target_Ship;
-        //c_Item = a_Weapon;
+        c_Wep = a_Weapon;
         c_Action = action_Type.Weapon;
     }
 
     public TurnAction(GameObject active_Ship, _Shield a_Shield)
     {
         c_Ship = active_Ship;
-        //c_Item = a_Shield;
+        c_Shield = a_Shield;
         c_Action = action_Type.Shield;
     }
 
     public TurnAction(GameObject active_Ship, _Engine a_Engine)
     {
         c_Ship = active_Ship;
-        //c_Item = a_Engine;
+        c_Eng = a_Engine;
         c_Action = action_Type.Engine;
     }
 
@@ -43,7 +47,7 @@ public class TurnAction : MonoBehaviour
     {
         c_Ship = active_Ship;
         t_Ship = target_Ship;
-        c_Item = a_equip;
+        c_Equ = a_equip;
         c_Action = action_Type.Equipment;
     }
 
@@ -58,15 +62,15 @@ public class TurnAction : MonoBehaviour
     {
 		
 	}
-    /*
+    
     public void Action()
     {
         switch (c_Action)
         {
             case action_Type.Weapon:
-                _Weapon cur_Wep = (_Weapon)c_Item; //cast as _weapon to allow for correct syntax and performance issue minimal in turn based combat
-                int c_Dam_S = cur_Wep.w_Get_Dam_S();
-                int c_Dam_H = cur_Wep.w_Get_Dam_H();
+                //_Weapon cur_Wep = (_Weapon)c_Item; //cast as _weapon to allow for correct syntax and performance issue minimal in turn based combat
+                int c_Dam_S = c_Wep.w_Get_Dam_S();
+                int c_Dam_H = c_Wep.w_Get_Dam_H();
                 if (t_Ship != null)
                 {
                     if (t_Ship.GetComponent<_Ship>().s_Get_Shields() <= 0)
@@ -86,22 +90,22 @@ public class TurnAction : MonoBehaviour
                 }
  
                 break;
-
+                /*
             case action_Type.Shield:
                 //_Shield cur_Shield = (_Shield)c_Item;
-                /*IMPLEMENT FUNCTIONALITY TO REGEN SHIELDS*/
-               /* break;
-
+               IMPLEMENT FUNCTIONALITY TO REGEN SHIELDS
+               /* break;*/
+            /*
             case action_Type.Engine:*/
                 /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR AGILITY BOOST THROUGH GREATER ENGINE POWER*/
-               /* break;
-
-            case action_Type.Equipment:*/
-                /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR SPECIAL MOVES*//*
+               //break;
+                /*
+            case action_Type.Equipment:
+                IMPLEMENT FUNCTIONALITY TO ALLOW FOR SPECIAL MOVES
                 break;
 
             default:
-                break;
+                break;*/
         }
-    }*/
+    }
 }

@@ -7,6 +7,7 @@ public class _Engine : ScriptableObject
 {
     protected enum e_Class_Enum
     {
+        e_Null,
         e_Fighter,
         e_Destroyer,
         e_Cruiser,
@@ -17,7 +18,7 @@ public class _Engine : ScriptableObject
     [SerializeField]
     protected float e_Power, e_Boost; //Engine output, engine boost value
     [SerializeField]
-    e_Class_Enum e_Class;
+    e_Class_Enum e_Class = e_Class_Enum.e_Null;
 
     public float e_Get_Power()
     {
