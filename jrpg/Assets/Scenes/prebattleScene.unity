@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 409421856}
   - component: {fileID: 409421855}
   - component: {fileID: 409421854}
+  - component: {fileID: 409421857}
   m_Layer: 5
   m_Name: Scrollbar
   m_TagString: Untagged
@@ -752,6 +753,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 409421852}
+--- !u!114 &409421857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409421852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c31c07507f85df4299d49cff0a813ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollbar: {fileID: 409421854}
+  listLength: 0
+  scrollAmount: 1
 --- !u!1 &458527827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSlotPrefab: {fileID: 1369581086039812, guid: 96d0a87534bc85d489759bb3085ad2a2,
+    type: 2}
+  emptyItemSlotPrefab: {fileID: 1724682260799344, guid: b34a29cce1d0f5947b2e9c961ddb0455,
     type: 2}
   content: {fileID: 1073044335}
   itemSlotToggleGroup: {fileID: 1826266185}
