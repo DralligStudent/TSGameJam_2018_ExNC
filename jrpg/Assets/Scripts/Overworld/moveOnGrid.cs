@@ -32,25 +32,25 @@ public class moveOnGrid : MonoBehaviour {
 
         if (count >= moveDelay)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
                 originalCoord = transform.position;
                 targetCoord.z = transform.position.z + gridSquareSize;
                 count = 0;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 originalCoord = transform.position;
                 targetCoord.x = transform.position.x + gridSquareSize;
                 count = 0;
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
                 originalCoord = transform.position;
                 targetCoord.z = transform.position.z - gridSquareSize;
                 count = 0;
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 originalCoord = transform.position;
                 targetCoord.x = transform.position.x - gridSquareSize;
