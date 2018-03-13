@@ -24,14 +24,14 @@ public class PreBattleState : MonoBehaviour {
     private int commandLevel;
     private int fleetPoints;
 
-    public int formationIndex;
+    private int formationIndex;
     private int inventoryIndex;
 
     int fleetSize = 5;
 
     //Container of key values that is passed to the battle system.
-    //The index will ALSO refer to the formation slot used.
-    //The values will be references to the index in the player's ship inventory, to let the battle system know which ships to put into play.
+    //The index of battleFormation also refers to the formation slot used.
+    //The index contains values which reference the index that contains the relevent ship in the player's inventory.
     int[] battleFormation = new int[5];
 
     //Since this class/script is meant to hold data in-between other happenings/levels, we don't want it destroyed.
@@ -61,7 +61,7 @@ public class PreBattleState : MonoBehaviour {
         formationIndex = newFormationIndex;
     }
 
-    void setInventoryIndex()
+    void setInventoryIndex(int newInventoryIndex)
     {
         inventoryIndex = newInventoryIndex;
     }
@@ -122,7 +122,7 @@ public class PreBattleState : MonoBehaviour {
         {
             //Send relevent information to battle system/GameState
             //Structure of Ships?
-            battleSystem.SendMessage("SetFormation", formationInfo);
+            battleSystem.SendMessage("SetFormation", battleFormation);
 
 
             isPreBattleActive = false;

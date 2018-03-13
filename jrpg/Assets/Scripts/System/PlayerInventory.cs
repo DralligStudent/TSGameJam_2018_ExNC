@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour {
     //However, shops can only be accessed on a timer.(?)
 
     //To use: call SetInven("Inventory name"), then call DisplayInven().
-    //From there, you can use a dictionary function to get the names of items or their index in the inventories.
+    //Use the index of the wanted item's string in the returned list with other inventory functions. 
     //You can use that index with other functions in the inventory.
 
     public static Inventory m_Player_Inventory;
@@ -71,60 +71,37 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    //A quick getter function for retriving a specific inventory item if its location is already known and type is already selected.
-    void GetInvenItem(int invenIndex)
-    {
-        switch (inventoryType)
-        {
-            case (int)InvenKeys.e_perk:
-
-            break;
-            case (int)InvenKeys.e_ship:
-                for (int i = 0; i < perkInven.Count; i++)
-                {
-
-                }
-            break;
-            case (int)InvenKeys.e_gun:
-                for (int i = 0; i < gunInven.Count; i++)
-                {
-
-                }
-            break;
-            default:
-                break;
-        }
-    }
-
-    //Returns a dictionary with the item's name as the key, and (in theory) its index in the inventory as the value.
+    //Returns a list of strings, each index holding the name of an item.
+    //This index should match the index location of the list the item is stored in.
     //You can use that index to access that specific item.
-    IDictionary<string, int> DisplayInven()
+    List<string> DisplayInven()
     {
-        IDictionary<string, int> listout = new Dictionary<string, int>();
+        List<string> listout = new List<string>();
         switch (inventoryType)
         {
             case (int)InvenKeys.e_perk:
                 for (int i =0; i<perkInven.Count; i++)
                 {
-                    listout.Add(new KeyValuePair<string, int>(perkInven[i].name, i));
+                    listout.Add(perkInven[i].name);
                 }
                 return listout;
                 //break;
             case (int)InvenKeys.e_ship:
                 for (int i = 0; i < perkInven.Count; i++)
                 {
-                    listout.Add(new KeyValuePair<string, int>(shipInven[i].name, i));
+                    listout.Add(shipInven[i].name);
                 }
                 return listout;
                 //break;
             case (int)InvenKeys.e_gun:
                 for (int i = 0; i < gunInven.Count; i++)
                 {
-                    listout.Add(new KeyValuePair<string, int>(gunInven[i].name, i));
+                    listout.Add(gunInven[i].name);
                 }
                 return listout;
                 //break;
             default:
+                listout.Add("Error displaying Inventory.");
                 return listout;
                 //break;
         }
@@ -172,14 +149,16 @@ public class Inventory : MonoBehaviour {
     }
     Perk AccessPerk(int selectedItemIndex)
     {
-
         return perkInven[selectedItemIndex];
     }
     Ship AccessShip(int selectedItemIndex)
     {
-
+        return shipInven[selectedItemIndex];
     }
-
+    Gun AccessGun(int selectedItemIndex)
+    {
+        return gunInven[selectedItemIndex];
+    }
 
     //Overloaded fuctions to add items to their specific inventories.
     //Could be improved via inheritance and interfaces? Ask tutors
