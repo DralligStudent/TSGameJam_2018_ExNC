@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour {
 
     //To use: call SetInven("Inventory name"), then call DisplayInven().
     //Use the index of the wanted item's string in the returned list with other inventory functions. 
-    //You can use that index with other functions in the inventory.
 
     public static Inventory m_Player_Inventory;
     public Inventory m_inventory;
@@ -107,6 +106,50 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //Directly returns the item in question.
+    //Unsure if a copy or pointer is returned. As such, unsure if modifications to the returned item will affect the item in the inventory.
+    //TESTING REQUIRED.
+    //Seperate functions required because of c# strong typing.
+    Perk AccessPerk(int selectedItemIndex)
+    {
+        return perkInven[selectedItemIndex];
+    }
+    Ship AccessShip(int selectedItemIndex)
+    {
+        return shipInven[selectedItemIndex];
+    }
+    Gun AccessGun(int selectedItemIndex)
+    {
+        return gunInven[selectedItemIndex];
+    }
+
+    //Overloaded fuctions to add items to their specific inventories.
+    //Could be improved via inheritance and interfaces? Ask tutors
+    void AddItem(Perk other)
+    {
+        if (inventoryType == (int)InvenKeys.e_perk)
+        {
+            perkInven.Add(other);
+        }
+    }
+
+    void AddItem(Ship other)
+    {
+        if (inventoryType == (int)InvenKeys.e_ship)
+        {
+            shipInven.Add(other);
+        }
+    }
+
+    void AddItem(Gun other)
+    {
+        if (inventoryType == (int)InvenKeys.e_gun)
+        {
+            gunInven.Add(other);
+        }
+    }
+
+
     //Use the index from DisplayInven() to make sure the correct item is selected.
     void DeleteInvenItem(int selectedItemIndex)
     {
@@ -147,45 +190,6 @@ public class Inventory : MonoBehaviour {
         }
 
     }
-    Perk AccessPerk(int selectedItemIndex)
-    {
-        return perkInven[selectedItemIndex];
-    }
-    Ship AccessShip(int selectedItemIndex)
-    {
-        return shipInven[selectedItemIndex];
-    }
-    Gun AccessGun(int selectedItemIndex)
-    {
-        return gunInven[selectedItemIndex];
-    }
-
-    //Overloaded fuctions to add items to their specific inventories.
-    //Could be improved via inheritance and interfaces? Ask tutors
-    void AddItem(Perk other)
-    {
-        if (inventoryType == (int)InvenKeys.e_perk)
-        {
-            perkInven.Add(other);
-        }
-    }
-
-    void AddItem(Ship other)
-    {
-        if (inventoryType == (int)InvenKeys.e_ship)
-        {
-            shipInven.Add(other);
-        }
-    }
-
-    void AddItem(Gun other)
-    {
-        if (inventoryType == (int)InvenKeys.e_gun)
-        {
-            gunInven.Add(other);
-        }
-    }
-
 
     //Start section: Tutor examples given
     //bool LoadData
@@ -255,6 +259,7 @@ public class Inventory : MonoBehaviour {
     void Awake()
     {
         //Creates a singleton object. This Object will exsist between unity scene loads.
+        //Note: Set this as the player inventory/set isPlayerInven in Unity's UI.
         if (m_Player_Inventory == null && isPlayerInven)
         {
             m_Player_Inventory = this;
