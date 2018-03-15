@@ -922,6 +922,7 @@ GameObject:
   - component: {fileID: 633342898}
   - component: {fileID: 633342899}
   - component: {fileID: 633342900}
+  - component: {fileID: 633342901}
   m_Layer: 8
   m_Name: Cube
   m_TagString: impassable
@@ -1037,6 +1038,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &633342901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 633342893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3165b1adfcd12409aaee1680d32dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Ships:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &699600557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleStart: 0
+  Player_Pos: {fileID: 0}
+  e_Fleet: {fileID: 0}
   GSM: 2
 --- !u!4 &1594966589
 Transform:

@@ -28,6 +28,7 @@ public class LOSScriptedEnc : MonoBehaviour {
                     encounterTrigger = true;
                     //move to prebattle
                     GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                    GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
                     SceneManager.LoadScene("prebattleScene");
                     encounterAlreadyDone = true;
                 }
@@ -39,6 +40,7 @@ public class LOSScriptedEnc : MonoBehaviour {
                     encounterTrigger = true;
                     //move to prebattle
                     GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                    GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
                     SceneManager.LoadScene("prebattleScene");
                     encounterAlreadyDone = true;
                 }
@@ -50,6 +52,7 @@ public class LOSScriptedEnc : MonoBehaviour {
                     encounterTrigger = true;
                     //move to prebattle
                     GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                    GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
                     SceneManager.LoadScene("prebattleScene");
                     encounterAlreadyDone = true;
                 }
@@ -61,6 +64,7 @@ public class LOSScriptedEnc : MonoBehaviour {
                     encounterTrigger = true;
                     //move to prebattle
                     GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                    GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
                     encounterAlreadyDone = true;
                     SceneManager.LoadScene("prebattleScene");
                     

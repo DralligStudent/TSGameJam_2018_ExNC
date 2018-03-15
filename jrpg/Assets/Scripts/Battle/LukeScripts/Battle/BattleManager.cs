@@ -162,6 +162,11 @@ public class BattleManager : MonoBehaviour
         {
             a.Action();
         }*/
+
+        if (E_Ship_Array.Length == 0)
+        {
+            c_Battle = battle_State.Win;
+        }
     }
 
     void b_Set_Turn()

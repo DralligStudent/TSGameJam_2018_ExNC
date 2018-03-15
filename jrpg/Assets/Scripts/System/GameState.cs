@@ -20,6 +20,7 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private Transform Player_Pos;
 
+    public EnemyFleet e_Fleet;
     public enum GameStateMachine
     {
         gs_Null,
