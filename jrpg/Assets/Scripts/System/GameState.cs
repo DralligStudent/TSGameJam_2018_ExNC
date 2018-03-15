@@ -14,6 +14,24 @@ public class GameState : MonoBehaviour {
     public static bool isOnOverworld = false;
     public static bool isInPreBattle = false;
     public static bool isInBattle = false;
+    public bool battleStart = false;
+
+    private BattleManager N_Battle;
+    [SerializeField]
+    private Transform Player_Pos;
+
+    public EnemyFleet e_Fleet;
+    public enum GameStateMachine
+    {
+        gs_Null,
+        gs_StartMenu,
+        gs_OnOverworld,
+        gs_PreBattle,
+        gs_Battle
+    };
+
+    public GameStateMachine GSM;
+
     //Bools/int for tracking game progress
     //Used for traditional gameState machine.
     private int gameProgress = 0;
@@ -37,7 +55,31 @@ public class GameState : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        switch (GSM)
+        {
+            case GameStateMachine.gs_Null:
+                break;
+
+            case GameStateMachine.gs_OnOverworld:
+                Player_Pos = GameObject.Find("Player").GetComponent<Transform>();
+                break;
+
+            case GameStateMachine.gs_PreBattle:
+                break;
+
+            case GameStateMachine.gs_Battle:
+                if (N_Battle == null && battleStart)
+                {
+                    N_Battle = new BattleManager(PreBattleState.m_PreBattleState.currentPlayerFleet, PreBattleState.m_PreBattleState.currentEnemyFleet);
+                    battleStart = false;
+                }
+                else
+                {
+                    //Stuff for the battle. UI maybe?
+                }
+                break;
+        }
 	}
 }

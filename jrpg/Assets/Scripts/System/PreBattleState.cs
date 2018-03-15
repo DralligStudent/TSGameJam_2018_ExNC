@@ -19,18 +19,21 @@ public class PreBattleState : MonoBehaviour {
     public static bool newBattle = false;
     public bool isReady = false;
 
+    public PlayerFleet currentPlayerFleet;
+    public EnemyFleet currentEnemyFleet;
+
     private int commandLevel;
     private int fleetPoints;
 
     private int formationIndex;
     private int inventoryIndex;
 
-    int fleetSize = 5;
+    int fleetSize = 10;
 
     //Container of key values that is passed to the battle system.
     //The index of battleFormation also refers to the formation slot used.
     //The index contains values which reference the index that contains the relevent ship in the player's inventory.
-    int[] battleFormation = new int[5];
+    int[] battleFormation = new int[10];
 
     //UI can call this function with a send message.
     void setFormationIndex(int newFormationIndex)
@@ -59,6 +62,14 @@ public class PreBattleState : MonoBehaviour {
         //Placeholder values.
         commandLevel = PlayerCommander.GetLevel();
         fleetPoints = commandLevel * 100;
+    }
+
+    void CreateFleet()
+    {
+        for (int i = 0; i < fleetSize; i++)
+        {
+            currentPlayerFleet._Add_To_Fleet(PlayerInventory.m_Player_Inventory.AccessShip(battleFormation[i]));
+        }
     }
 
     //Boolean toggles
@@ -97,7 +108,6 @@ public class PreBattleState : MonoBehaviour {
         {
             if (newBattle)
             {
-
                 CalcFleetPoints();
                 NewBattleToggle();
             }
@@ -106,10 +116,10 @@ public class PreBattleState : MonoBehaviour {
             //Future improvements: Adding a confirm
             if (isReady)
             {
-                battleSystem.SendMessage("SetFormation", battleFormation);
                 PreBattleActiveToggle();
                 ReadyToggle();
                 NewBattleToggle();
+                //loadscene
             }
         }
 	}

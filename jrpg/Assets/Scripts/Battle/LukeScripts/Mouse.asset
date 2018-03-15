@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Name: Mouse
   m_EditorClassIdentifier: 
   s_Engine: []
-  s_Shields: []
+  s_Shields:
+  - {fileID: 11400000, guid: 57718a80e71f3124281b50b282a71816, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   s_Weapons: []
   s_Equipment: []
+  s_WHAT: {fileID: 0}
   s_Max_Health: 0
+  s_Size: 0
+  s_Agility: 0
+  s_Weight: 0
+  s_FP_Value: 0
+  s_Class: 0
