@@ -68,7 +68,7 @@ public class PreBattleState : MonoBehaviour {
     {
         for (int i = 0; i < fleetSize; i++)
         {
-
+            currentPlayerFleet._Add_To_Fleet(PlayerInventory.m_Player_Inventory.AccessShip(battleFormation[i]));
         }
     }
 

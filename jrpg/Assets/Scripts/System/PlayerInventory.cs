@@ -44,11 +44,11 @@ public class PlayerInventory : MonoBehaviour {
 
     //temporary forward declarations
     public class Item { public string name; };
-    public class Ship : Item { };
+    //public class Ship : Item { };
     public class Gun : Item { };
     public class Perk : Item { };
 
-    IList<Ship> shipInven = new List<Ship>();
+    IList<GameObject> shipInven = new List<GameObject>();
     IList<Gun> gunInven = new List<Gun>();
     IList<Perk> perkInven = new List<Perk>();
 
@@ -114,7 +114,7 @@ public class PlayerInventory : MonoBehaviour {
     {
         return perkInven[selectedItemIndex];
     }
-    public Ship AccessShip(int selectedItemIndex)
+    public GameObject AccessShip(int selectedItemIndex)
     {
         return shipInven[selectedItemIndex];
     }
@@ -133,7 +133,7 @@ public class PlayerInventory : MonoBehaviour {
         }
     }
 
-    public void AddItem(Ship other)
+    public void AddItem(GameObject other)
     {
         if (inventoryType == (int)InvenKeys.e_ship)
         {
