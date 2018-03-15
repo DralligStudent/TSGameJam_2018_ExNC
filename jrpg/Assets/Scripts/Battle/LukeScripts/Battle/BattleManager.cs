@@ -5,14 +5,17 @@ using System;
 
 public class BattleManager : MonoBehaviour
 {
-    /*
+    
     public PlayerFleet Player;
-    public EnemyFleet Enemy;                        //IS FLEET NEEDED? YES
-    */
+    public EnemyFleet Enemy;
+    
     public bool isActive;
     protected TurnAction[] Turns;
-    public GameObject[] Ship_Array;
+    public GameObject[] P_Ship_Array;
+    public GameObject[] E_Ship_Array;
     public GameObject active_Ship;
+
+    private bool set_Action = false;
 
     
     public enum attack_Choice
@@ -42,10 +45,20 @@ public class BattleManager : MonoBehaviour
         D
     };
 
+    public enum battle_State
+    {
+        Null = 0,
+        PlayerTurn,
+        ActionPhase,
+        Loss,
+        Win
+    };
+
     attack_Choice a_Choice = attack_Choice.Null;
     defense_Choice d_Choice = defense_Choice.Null;
     equipment_Choice e_Choice = equipment_Choice.Null;
 
+    battle_State c_Battle = battle_State.Null;
 
     /*
     _Ship rat;
@@ -54,14 +67,24 @@ public class BattleManager : MonoBehaviour
 
     public BattleManager(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
     {
-        /*
         Player = p_Fleet;
-        Enemy = e_Fleet;*/
+        Enemy = e_Fleet;
+
+        P_Ship_Array = new GameObject[Player.get_FleetSize()];
+        P_Ship_Array = Player.get_Fleet();
+
+        E_Ship_Array = new GameObject[Enemy.get_FleetSize()];
+        E_Ship_Array = Enemy.get_Fleet();
     }
 
     // Use this for initialization
     void Start()
-    { /*
+    {
+        c_Battle = battle_State.PlayerTurn;
+
+
+
+        /*
         Turns = new TurnAction[1];
         Ship_Array = new _Ship[2];
         */
@@ -105,13 +128,34 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < Ship_Array.Length; i++)
+        for (int i = 0; i < P_Ship_Array.Length; i++)
         {
             /*
              * THIS IS WHERE THE UI IS NEEDED SO I CAN SET THE RIGHT THINGS THAT I CANT THINK OF RIGHT NOW
              */
             //b_Set_Turn()
 
+        }
+
+        if (Input.GetKey(KeyCode.K))
+        {
+            Debug.Log("Cheat win go");
+            foreach (GameObject G in E_Ship_Array)
+            {
+                G.GetComponent<_Ship>().s_Take_Damage(100000000, true);
+                c_Battle = battle_State.Win;
+            }
+        }
+
+        foreach (GameObject G in P_Ship_Array)
+        {
+            active_Ship = G;
+            set_Action = false;
+            if (set_Action == false)
+            {
+
+            }
+            set_Action = true;
         }
 
         /*foreach (TurnAction a in Turns)

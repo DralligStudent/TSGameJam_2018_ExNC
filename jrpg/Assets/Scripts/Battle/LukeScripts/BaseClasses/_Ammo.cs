@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class _Ammo : ScriptableObject
 {
+    public int a_Cur_Ammount;
     protected enum a_enum_Type //defines the weapon that the ammo can be used inside
     {
         _Lazer,

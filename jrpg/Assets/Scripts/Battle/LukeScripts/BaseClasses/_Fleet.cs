@@ -26,4 +26,14 @@ public class _Fleet : MonoBehaviour
             }
         }
     }
+
+    public int get_FleetSize()
+    {
+        return _Ships.Length;
+    }
+
+    public GameObject[] get_Fleet()
+    {
+        return _Ships;
+    }
 }
