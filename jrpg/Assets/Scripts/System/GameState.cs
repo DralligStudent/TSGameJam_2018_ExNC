@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour {
     public bool battleStart = false;
 
     private BattleManager N_Battle;
+    [SerializeField]
     private Transform Player_Pos;
 
     public enum GameStateMachine
@@ -61,7 +62,7 @@ public class GameState : MonoBehaviour {
                 break;
 
             case GameStateMachine.gs_OnOverworld:
-                //Player_Pos = PlayerGameObject.Transform
+                Player_Pos = GameObject.Find("Player").GetComponent<Transform>();
                 break;
 
             case GameStateMachine.gs_PreBattle:
