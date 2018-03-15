@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryListWindow : MonoBehaviour {
 
-    public GameObject itemSlotPrefab;
-    public GameObject content;
+    public GameObject itemSlotPrefab;//ship slot prefab
+    public GameObject emptyItemSlotPrefab;//empty slot prefab
+    public GameObject content;//the area to fill with prefabs
     public ToggleGroup itemSlotToggleGroup;
 
-    private int xPos;
-    private int yPos;
+    private int xPos = 0;
+    private int yPos = 0;
     private GameObject itemSlot;
 
 	// Use this for initialization
@@ -25,9 +26,18 @@ public class InventoryListWindow : MonoBehaviour {
 
     private void CreateInventorySlotsInWindow()
     {
-        for (int i = 0; i < 20; i++)//change 20 to the size of the players fleet
+        for (int i = 0; i < 20; i++)//fills the fleet inventory list (change 20 to the size of the players fleet)
         {
             itemSlot = (GameObject)Instantiate(itemSlotPrefab);
+            itemSlot.name = i.ToString();
+            itemSlot.GetComponent<Toggle>().group = itemSlotToggleGroup;
+            itemSlot.transform.SetParent(content.transform);
+            itemSlot.GetComponent<RectTransform>().localPosition = new Vector3(xPos, yPos, 0);
+            yPos -= (int)itemSlot.GetComponent<RectTransform>().rect.height;
+        }
+        for (int i = 0; i < 4; i++)//fills the extra space at the bottom
+        {
+            itemSlot = (GameObject)Instantiate(emptyItemSlotPrefab);
             itemSlot.name = i.ToString();
             itemSlot.GetComponent<Toggle>().group = itemSlotToggleGroup;
             itemSlot.transform.SetParent(content.transform);
