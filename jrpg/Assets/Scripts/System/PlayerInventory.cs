@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class PlayerInventory : MonoBehaviour {
 
     //Player inventory is created once and goes though scene changes.
     //What should we do for other inventories? Random generation? Will they be saved?
@@ -12,8 +12,8 @@ public class Inventory : MonoBehaviour {
     //To use: call SetInven("Inventory name"), then call DisplayInven().
     //Use the index of the wanted item's string in the returned list with other inventory functions. 
 
-    public static Inventory m_Player_Inventory;
-    public Inventory m_inventory;
+    public static PlayerInventory m_Player_Inventory;
+    public PlayerInventory m_inventory;
 
     public bool isPlayerInven;
 
@@ -43,10 +43,10 @@ public class Inventory : MonoBehaviour {
     int inventoryType;
 
     //temporary forward declarations
-    class Item { public string name; };
-    class Ship : Item { };
-    class Gun : Item { };
-    class Perk : Item { };
+    public class Item { public string name; };
+    public class Ship : Item { };
+    public class Gun : Item { };
+    public class Perk : Item { };
 
     IList<Ship> shipInven = new List<Ship>();
     IList<Gun> gunInven = new List<Gun>();
@@ -110,22 +110,22 @@ public class Inventory : MonoBehaviour {
     //Unsure if a copy or pointer is returned. As such, unsure if modifications to the returned item will affect the item in the inventory.
     //TESTING REQUIRED.
     //Seperate functions required because of c# strong typing.
-    Perk AccessPerk(int selectedItemIndex)
+    public Perk AccessPerk(int selectedItemIndex)
     {
         return perkInven[selectedItemIndex];
     }
-    Ship AccessShip(int selectedItemIndex)
+    public Ship AccessShip(int selectedItemIndex)
     {
         return shipInven[selectedItemIndex];
     }
-    Gun AccessGun(int selectedItemIndex)
+    public Gun AccessGun(int selectedItemIndex)
     {
         return gunInven[selectedItemIndex];
     }
 
     //Overloaded fuctions to add items to their specific inventories.
     //Could be improved via inheritance and interfaces? Ask tutors
-    void AddItem(Perk other)
+    public void AddItem(Perk other)
     {
         if (inventoryType == (int)InvenKeys.e_perk)
         {
@@ -133,7 +133,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    void AddItem(Ship other)
+    public void AddItem(Ship other)
     {
         if (inventoryType == (int)InvenKeys.e_ship)
         {
@@ -141,7 +141,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    void AddItem(Gun other)
+    public void AddItem(Gun other)
     {
         if (inventoryType == (int)InvenKeys.e_gun)
         {
@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour {
 
 
     //Use the index from DisplayInven() to make sure the correct item is selected.
-    void DeleteInvenItem(int selectedItemIndex)
+    public void DeleteInvenItem(int selectedItemIndex)
     {
         switch (inventoryType)
         {
