@@ -7,14 +7,14 @@ public class BattleManager : MonoBehaviour
 {
     /*
     public PlayerFleet Player;
-    public EnemyFleet Enemy;                        //IS FLEET NEEDED?
+    public EnemyFleet Enemy;                        //IS FLEET NEEDED? YES
     */
     public bool isActive;
     protected TurnAction[] Turns;
     public GameObject[] Ship_Array;
     public GameObject active_Ship;
 
-    /*
+    
     public enum attack_Choice
     {
         Null = 0,
@@ -28,7 +28,7 @@ public class BattleManager : MonoBehaviour
     {
         Null = 0,
         A,
-        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS
+        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS ******** YE WE NEED THIS DUDE
         C,
         D
     };
@@ -40,7 +40,11 @@ public class BattleManager : MonoBehaviour
         B,
         C,
         D
-    };*/
+    };
+
+    attack_Choice a_Choice = attack_Choice.Null;
+    defense_Choice d_Choice = defense_Choice.Null;
+    equipment_Choice e_Choice = equipment_Choice.Null;
 
 
     /*
@@ -101,6 +105,15 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < Ship_Array.Length; i++)
+        {
+            /*
+             * THIS IS WHERE THE UI IS NEEDED SO I CAN SET THE RIGHT THINGS THAT I CANT THINK OF RIGHT NOW
+             */
+            //b_Set_Turn()
+
+        }
+
         /*foreach (TurnAction a in Turns)
         {
             a.Action();
