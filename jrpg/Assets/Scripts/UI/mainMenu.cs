@@ -63,7 +63,7 @@ public class mainMenu : MonoBehaviour {
 		{
 			if (currentSelection == 1)
 			{
-				SceneManager.LoadScene(1);//loads the next scene (probably difficulty select)
+				SceneManager.LoadScene("overworldScene");//loads the overWorld scene
 			}
 			else if(currentSelection == 2)
 			{
