@@ -19,5 +19,10 @@ public class LForNextScene : MonoBehaviour
         {
             SceneManager.LoadScene("battleScene");
         }
+
+        if (Input.GetKey(KeyCode.M))
+        {
+            SceneManager.LoadScene("overworldScene");
+        }
 	}
 }
