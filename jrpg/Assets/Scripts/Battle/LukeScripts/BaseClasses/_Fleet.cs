@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class _Fleet : MonoBehaviour
 {
-    public GameObject[] _Ships;
+    public GameObject[] _Ships =  new GameObject[10];
 
     protected void _Set_Fleet()
     {
@@ -12,7 +12,7 @@ public class _Fleet : MonoBehaviour
         //code to set fleet ->From pre-battle
     }
 
-    protected void _Add_To_Fleet(GameObject n_Ship)
+    public void _Add_To_Fleet(GameObject n_Ship)
     {
         for(int i = 0; i<=_Ships.Length;i++)
         {
