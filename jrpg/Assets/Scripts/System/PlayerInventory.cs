@@ -56,7 +56,7 @@ public class PlayerInventory : MonoBehaviour {
 
     //Sets the current item type/type to be worked with.
     //Accesses the InvenRef Dictionary with the provided string to give an associated item type number.
-    void SetInven(string itemTypeName)
+    public void SetInven(string itemTypeName)
     {
         int inventoryTypeIndex;
         if (InvenRef.TryGetValue(itemTypeName, out inventoryTypeIndex))
@@ -73,7 +73,7 @@ public class PlayerInventory : MonoBehaviour {
     //Returns a list of strings, each index holding the name of an item.
     //This index should match the index location of the list the item is stored in.
     //You can use that index to access that specific item.
-    List<string> DisplayInven()
+    public List<string> DisplayInven()
     {
         List<string> listout = new List<string>();
         switch (inventoryType)
@@ -86,7 +86,7 @@ public class PlayerInventory : MonoBehaviour {
                 return listout;
                 //break;
             case (int)InvenKeys.e_ship:
-                for (int i = 0; i < perkInven.Count; i++)
+                for (int i = 0; i < shipInven.Count; i++)
                 {
                     listout.Add(shipInven[i].name);
                 }
@@ -112,7 +112,9 @@ public class PlayerInventory : MonoBehaviour {
     //Seperate functions required because of c# strong typing.
     public Perk AccessPerk(int selectedItemIndex)
     {
+
         return perkInven[selectedItemIndex];
+
     }
     public GameObject AccessShip(int selectedItemIndex)
     {
@@ -130,6 +132,11 @@ public class PlayerInventory : MonoBehaviour {
         if (inventoryType == (int)InvenKeys.e_perk)
         {
             perkInven.Add(other);
+            Debug.Log("entered if");
+        }
+        if (perkInven.Count > 0)
+        {
+            Debug.Log("perk added");
         }
     }
 
@@ -139,6 +146,7 @@ public class PlayerInventory : MonoBehaviour {
         {
             shipInven.Add(other);
         }
+        
     }
 
     public void AddItem(Gun other)
@@ -147,6 +155,7 @@ public class PlayerInventory : MonoBehaviour {
         {
             gunInven.Add(other);
         }
+        
     }
 
 

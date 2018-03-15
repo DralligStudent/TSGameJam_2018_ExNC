@@ -4,50 +4,63 @@ using UnityEngine;
 
 
 public class shopScreen : MonoBehaviour {
-    public List<string> playerInv;
+    public GameObject playerInvHolder;
     public int money;
     public bool itemBought, itemSold, itemNotFound, notEnoughMoney;
-	// Use this for initialization
-	void Start () {
-		
-	}
+
+    public int testPerkIndex;
+    // Use this for initialization
+    
+    void Start () {
+        this.GetComponent<PlayerInventory>().SetInven("Perks");
+        PlayerInventory.Perk perkins = new PlayerInventory.Perk();
+        perkins.name = "Blah de blah blah";
+        this.GetComponent<PlayerInventory>().AddItem(perkins);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            BuyItem(ref money, 10, playerInv, "Poopy Shooty");
+            BuyPerk(ref money, 10, playerInvHolder, testPerkIndex);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SellItem(ref money, 10, playerInv, "Poopy Shooty");
+            Debug.Log(playerInvHolder.GetComponent<PlayerInventory>().AccessPerk(testPerkIndex));
+            SellPerk(ref money, 10, playerInvHolder, testPerkIndex);
         }
 
     }
 
-    void BuyItem(ref int money, int price, List<string> functPlayerInv, string item)
+    void BuyPerk(ref int money, int price, GameObject functPlayerInv, int perkIndex)
     {
-        if (price > money)
+        functPlayerInv.GetComponent<PlayerInventory>().SetInven("Perks");
+        if (this.GetComponent<PlayerInventory>().AccessPerk(perkIndex) != null)
         {
-            //Display not enough money message
-            notEnoughMoney = true;
-            return;
-        }
+            if (price > money)
+            {
+                //Display not enough money message
+                notEnoughMoney = true;
+                return;
+            }
             money -= price;
-        functPlayerInv.Add(item);
-        itemBought = true;
+            functPlayerInv.GetComponent<PlayerInventory>().AddItem(this.GetComponent<PlayerInventory>().AccessPerk(perkIndex));
+            itemBought = true;
+        }
     }
 
-    void SellItem(ref int money, int price, List<string> functPlayerInv, string item)
+    void SellPerk(ref int money, int price, GameObject functPlayerInv, int perkIndex)
     {
-        if (!functPlayerInv.Contains(item))
+        functPlayerInv.GetComponent<PlayerInventory>().SetInven("Perks");
+        if (functPlayerInv.GetComponent<PlayerInventory>().AccessPerk(perkIndex) == null)
         {
             //Display Item not in inv message
             itemNotFound = true;
             return;
         }
         money += price;
-        functPlayerInv.Remove(item);
+        functPlayerInv.GetComponent<PlayerInventory>().DeleteInvenItem(perkIndex);
         itemSold = true;
     }
 }
