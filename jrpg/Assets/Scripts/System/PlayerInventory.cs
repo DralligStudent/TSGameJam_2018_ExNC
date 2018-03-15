@@ -52,8 +52,6 @@ public class PlayerInventory : MonoBehaviour {
     IList<Gun> gunInven = new List<Gun>();
     IList<Perk> perkInven = new List<Perk>();
 
-    //List<int> errorList = new List<int>();
-
     //Sets the current item type/type to be worked with.
     //Accesses the InvenRef Dictionary with the provided string to give an associated item type number.
     public void SetInven(string itemTypeName)
@@ -158,6 +156,22 @@ public class PlayerInventory : MonoBehaviour {
         
     }
 
+
+    public void DebugAddShipButton()
+    {
+        SetInven("Ships");
+        GameObject testy = new GameObject("Namey");
+        m_inventory.AddItem(testy);
+        Debug.Log("Added a ship to the inventory.");
+        //Destroy(testy);
+    }
+    public void DebugTestAccessShipButton()
+    {
+        SetInven("Ships");
+        GameObject Shipy = m_inventory.shipInven[3];
+        Debug.Log(m_inventory.shipInven[3]);
+        Debug.Log(Shipy);
+    }
 
     //Use the index from DisplayInven() to make sure the correct item is selected.
     public void DeleteInvenItem(int selectedItemIndex)
@@ -272,10 +286,12 @@ public class PlayerInventory : MonoBehaviour {
         if (m_Player_Inventory == null && isPlayerInven)
         {
             m_Player_Inventory = this;
+            DontDestroyOnLoad(this);
         }
-        DontDestroyOnLoad(this);
-
-
+        else
+        {
+            m_inventory = this;
+        }
     }
 
     // Use this for initialization
@@ -289,6 +305,12 @@ public class PlayerInventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.J)){
+            DebugAddShipButton();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            DebugTestAccessShipButton();
+        }
 	}
 }
