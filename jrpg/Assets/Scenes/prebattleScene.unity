@@ -919,7 +919,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 524082433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3dfacf2959b86d4bafdcaffefb6b7d9, type: 3}
+  m_Script: {fileID: 11500000, guid: bc54e328837b66b4f8d814037c0c0175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fleet: {fileID: 1295920451}
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 683609967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf92d579c19454e4d982182f3fd7e9d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 947dba759544b45498b2dc2959300511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 683609969}
@@ -1620,7 +1620,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1945951637
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a59264c9092301648a93a8442b370264, type: 3}
   m_Color: {r: 0.5058824, g: 0.5058824, b: 0.5058824, a: 1}
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295920451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b162ebdb3682dc448a6712cb3e46508, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b19dcb52f9d623428ca5617657db8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
