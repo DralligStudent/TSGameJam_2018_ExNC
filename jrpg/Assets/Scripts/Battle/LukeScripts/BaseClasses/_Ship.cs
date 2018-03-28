@@ -102,9 +102,9 @@ public class _Ship : ScriptableObject
     }
     */
     
-    protected void s_Call_Locked() //output all of the Locked Values(ie, the values not altered by the ships equipment. does not include shields)
+    public void s_Call_Locked() //output all of the Locked Values(ie, the values not altered by the ships equipment. does not include shields)
     {
-
+        //maybe have constructor take the UI elements so we can set them within this fucntion?
         Debug.Log("Health = " + s_Cur_Health);
         Debug.Log("Speed = " + s_Speed);
         Debug.Log("XP = " + s_Xp);

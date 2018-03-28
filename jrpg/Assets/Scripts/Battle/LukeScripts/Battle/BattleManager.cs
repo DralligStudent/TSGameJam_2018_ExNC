@@ -131,6 +131,7 @@ public class BattleManager : MonoBehaviour
         /*
          */
         b_Pre_Action_Call();
+        b_Action_Set();
 
 
         for (int i = 0; i < P_Ship_Array.Length; i++)
@@ -239,5 +240,15 @@ public class BattleManager : MonoBehaviour
     void b_Post_Action_Call()
     {
         //Place things within this function so that these actions take place post any action within a turn. for example DOT calculations
+    }
+
+    void b_Action_Set()
+    {
+        //Function used to set all the player actions
+    }
+
+    void b_Win_Conditions()
+    {
+        //function used to check every win/loss condition
     }
 }

@@ -96,12 +96,13 @@ public class TurnAction : MonoBehaviour
                 //int s_boost = 0;
                 foreach (_Shield S in c_Ship.GetComponent<_Ship>().s_Shields)
                 {
-                    S.sh_boost_action();
+                    S.sh_boost_action(); // fix implementation of shield boosting
                 }
                //IMPLEMENT FUNCTIONALITY TO BOOST REGEN SHIELDS
                break;
             
             case action_Type.Engine:
+
                 /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR AGILITY BOOST THROUGH GREATER ENGINE POWER*/
                break;
                 /*
