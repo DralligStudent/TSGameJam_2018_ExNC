@@ -761,11 +761,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 409421852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c31c07507f85df4299d49cff0a813ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 6992d57f24c324e4884fceba13777576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollbar: {fileID: 409421854}
-  listLength: 0
+  listLength: 20
   scrollAmount: 1
 --- !u!1 &458527827
 GameObject:
@@ -2327,6 +2327,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1514403163493670, guid: 294ace772c3c0014c81f281a97fb7b75, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 294ace772c3c0014c81f281a97fb7b75, type: 2}
   m_IsPrefabParent: 0
@@ -2453,9 +2457,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74a81a95a5370e48a908405083444af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlotPrefab: {fileID: 1369581086039812, guid: 96d0a87534bc85d489759bb3085ad2a2,
+  itemSlotPrefab: {fileID: 1369581086039812, guid: 20728e096d3230c49964ccf1b89f8938,
     type: 2}
-  emptyItemSlotPrefab: {fileID: 1724682260799344, guid: b34a29cce1d0f5947b2e9c961ddb0455,
+  emptyItemSlotPrefab: {fileID: 1724682260799344, guid: e1129499e0514b9439e5593a67c1c0fd,
     type: 2}
   content: {fileID: 1073044335}
   itemSlotToggleGroup: {fileID: 1826266185}
@@ -2653,6 +2657,7 @@ GameObject:
   - component: {fileID: 1446827459}
   - component: {fileID: 1446827458}
   - component: {fileID: 1446827457}
+  - component: {fileID: 1446827462}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2730,6 +2735,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446827462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446827456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1e6a7430def64489f01f623e11bd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470752550
 GameObject:
   m_ObjectHideFlags: 0

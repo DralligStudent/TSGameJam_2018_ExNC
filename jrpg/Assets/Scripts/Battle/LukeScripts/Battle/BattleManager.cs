@@ -5,16 +5,19 @@ using System;
 
 public class BattleManager : MonoBehaviour
 {
-    /*
+    
     public PlayerFleet Player;
-    public EnemyFleet Enemy;                        //IS FLEET NEEDED?
-    */
+    public EnemyFleet Enemy;
+    
     public bool isActive;
     protected TurnAction[] Turns;
-    public GameObject[] Ship_Array;
+    public GameObject[] P_Ship_Array;
+    public GameObject[] E_Ship_Array;
     public GameObject active_Ship;
 
-    /*
+    private bool set_Action = false;
+
+    
     public enum attack_Choice
     {
         Null = 0,
@@ -28,7 +31,7 @@ public class BattleManager : MonoBehaviour
     {
         Null = 0,
         A,
-        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS
+        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS ******** YE WE NEED THIS DUDE
         C,
         D
     };
@@ -40,8 +43,22 @@ public class BattleManager : MonoBehaviour
         B,
         C,
         D
-    };*/
+    };
 
+    public enum battle_State
+    {
+        Null = 0,
+        PlayerTurn,
+        ActionPhase,
+        Loss,
+        Win
+    };
+
+    attack_Choice a_Choice = attack_Choice.Null;
+    defense_Choice d_Choice = defense_Choice.Null;
+    equipment_Choice e_Choice = equipment_Choice.Null;
+
+    battle_State c_Battle = battle_State.Null;
 
     /*
     _Ship rat;
@@ -50,14 +67,24 @@ public class BattleManager : MonoBehaviour
 
     public BattleManager(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
     {
-        /*
         Player = p_Fleet;
-        Enemy = e_Fleet;*/
+        Enemy = e_Fleet;
+
+        P_Ship_Array = new GameObject[Player.get_FleetSize()];
+        P_Ship_Array = Player.get_Fleet();
+
+        E_Ship_Array = new GameObject[Enemy.get_FleetSize()];
+        E_Ship_Array = Enemy.get_Fleet();
     }
 
     // Use this for initialization
     void Start()
-    { /*
+    {
+        c_Battle = battle_State.PlayerTurn;
+
+
+
+        /*
         Turns = new TurnAction[1];
         Ship_Array = new _Ship[2];
         */
@@ -101,10 +128,62 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+         */
+        b_Pre_Action_Call();
+
+
+        for (int i = 0; i < P_Ship_Array.Length; i++)
+        {
+            /*
+             * THIS IS WHERE THE UI IS NEEDED SO I CAN SET THE RIGHT THINGS THAT I CANT THINK OF RIGHT NOW
+             */
+            //b_Set_Turn()
+
+        }
+
+        if (Input.GetKey(KeyCode.K))
+        {
+            Debug.Log("Cheat win go");
+            foreach (GameObject G in E_Ship_Array)
+            {
+                G.GetComponent<_Ship>().s_Take_Damage(100000000, true);
+                c_Battle = battle_State.Win;
+            }
+        }
+
+        foreach (GameObject G in P_Ship_Array)
+        {
+            active_Ship = G;
+            set_Action = false;
+            if (set_Action == false)
+            {
+
+            }
+            set_Action = true;
+        }
+
         /*foreach (TurnAction a in Turns)
         {
             a.Action();
         }*/
+
+        b_Post_Action_Call();
+
+
+        if (E_Ship_Array.Length == 0)
+        {
+            c_Battle = battle_State.Win;
+        }
+
+
+        /*
+         * Stall the script until it is called again, managing the battle flow.
+         * 
+         * 
+         * 
+         * 
+         */
     }
 
     void b_Set_Turn()
@@ -112,7 +191,7 @@ public class BattleManager : MonoBehaviour
         /*
          * Set the active ship in ui
          */
-         //Active ship should already be set to the next ship in the speed list.
+        //Active ship should already be set to the next ship in the speed list.
 
 
         /*
@@ -126,20 +205,22 @@ public class BattleManager : MonoBehaviour
         /*
          * Create a turnaction and add to the que of turns.
          */
-         
 
 
-        
+
+
         //var i_Choice = 
 
         //switch (i_Choice)
-            //case attack_Choice
+        //case attack_Choice
 
         /*
         TurnAction n_Turn; //define the turn
         int x; //define its position
         Turns[x] = n_Turn; //add to array of turns
         */
+
+
     }
 
     void b_Speed_Sort()
@@ -148,5 +229,15 @@ public class BattleManager : MonoBehaviour
          * This is where the sorting of the ship speed should be done. WWOW What a task
          * 
          */
+    }
+
+    void b_Pre_Action_Call()
+    {
+        //place things within this function so that these actions take place prior to any other action in a turn. for example shield recharge
+    }
+
+    void b_Post_Action_Call()
+    {
+        //Place things within this function so that these actions take place post any action within a turn. for example DOT calculations
     }
 }

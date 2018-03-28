@@ -138,7 +138,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   Enemy: {fileID: 0}
   isActive: 0
-  Ship_Array: []
+  P_Ship_Array: []
+  E_Ship_Array: []
   active_Ship: {fileID: 0}
 --- !u!4 &615890231
 Transform:
@@ -483,6 +484,16 @@ Prefab:
     - target: {fileID: 4512065520179154, guid: 95e5961d69f17bd418ae3affb07e4df6, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114559739399140504, guid: 95e5961d69f17bd418ae3affb07e4df6,
+        type: 2}
+      propertyPath: ShipClass
+      value: 
+      objectReference: {fileID: 11400000, guid: e35ffa1cb2d881941851f6128318a68a,
+        type: 2}
+    - target: {fileID: 1708296648110580, guid: 95e5961d69f17bd418ae3affb07e4df6, type: 2}
+      propertyPath: m_Name
+      value: wagwanpiffting
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e5961d69f17bd418ae3affb07e4df6, type: 2}

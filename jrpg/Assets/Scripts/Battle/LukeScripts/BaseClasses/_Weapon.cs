@@ -29,6 +29,10 @@ public class _Weapon : ScriptableObject
     protected w_Class_Enum w_Class;
     [SerializeField]
     protected w_Type_Enum w_Type;
+    [SerializeField]
+    protected int w_Ammo_Cap;
+
+    private int w_Cur_Ammo;
 
     public _Ammo w_Ammo;
 
@@ -86,14 +90,19 @@ public class _Weapon : ScriptableObject
             {
                 a_Dam = a_Dam + a_Dam * n_Bias;
             }*/
-            /*
-            float n_Dam = (float)a_Dam * w_Damage;
-            n_Dam += 0.999f; //ensure rounding up when casting into int due to c# stripping decimal rather than rounding
+    /*
+    float n_Dam = (float)a_Dam * w_Damage;
+    n_Dam += 0.999f; //ensure rounding up when casting into int due to c# stripping decimal rather than rounding
 
-            return (int)n_Dam; //return n_Dam as int so it can be taken from target ship health
+    return (int)n_Dam; //return n_Dam as int so it can be taken from target ship health
 
-        }
-    }*/
+}
+}*/
+
+    public int w_Check_Ammo()
+    {
+        return w_Cur_Ammo;
+    }
 
     public int w_Get_Dam_S()
     {
