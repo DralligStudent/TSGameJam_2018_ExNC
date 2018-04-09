@@ -130,8 +130,8 @@ public class BattleManager : MonoBehaviour
     {
         /*
          */
-        b_Pre_Action_Call();
-        b_Action_Set();
+        b_Pre_Action_Call();//this triggers actions before turn choices
+        b_Action_Set();//turn choices are made
 
 
         for (int i = 0; i < P_Ship_Array.Length; i++)
@@ -245,6 +245,14 @@ public class BattleManager : MonoBehaviour
     void b_Action_Set()
     {
         //Function used to set all the player actions
+        
+        
+        
+        
+        
+        
+        
+        //TurnAction n_Turn = new TurnAction(active_Ship, )
     }
 
     void b_Win_Conditions()
