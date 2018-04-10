@@ -128,6 +128,11 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+         */
+        b_Pre_Action_Call();
+
+
         for (int i = 0; i < P_Ship_Array.Length; i++)
         {
             /*
@@ -163,10 +168,22 @@ public class BattleManager : MonoBehaviour
             a.Action();
         }*/
 
+        b_Post_Action_Call();
+
+
         if (E_Ship_Array.Length == 0)
         {
             c_Battle = battle_State.Win;
         }
+
+
+        /*
+         * Stall the script until it is called again, managing the battle flow.
+         * 
+         * 
+         * 
+         * 
+         */
     }
 
     void b_Set_Turn()
@@ -174,7 +191,7 @@ public class BattleManager : MonoBehaviour
         /*
          * Set the active ship in ui
          */
-         //Active ship should already be set to the next ship in the speed list.
+        //Active ship should already be set to the next ship in the speed list.
 
 
         /*
@@ -188,20 +205,22 @@ public class BattleManager : MonoBehaviour
         /*
          * Create a turnaction and add to the que of turns.
          */
-         
 
 
-        
+
+
         //var i_Choice = 
 
         //switch (i_Choice)
-            //case attack_Choice
+        //case attack_Choice
 
         /*
         TurnAction n_Turn; //define the turn
         int x; //define its position
         Turns[x] = n_Turn; //add to array of turns
         */
+
+
     }
 
     void b_Speed_Sort()
@@ -210,5 +229,15 @@ public class BattleManager : MonoBehaviour
          * This is where the sorting of the ship speed should be done. WWOW What a task
          * 
          */
+    }
+
+    void b_Pre_Action_Call()
+    {
+        //place things within this function so that these actions take place prior to any other action in a turn. for example shield recharge
+    }
+
+    void b_Post_Action_Call()
+    {
+        //Place things within this function so that these actions take place post any action within a turn. for example DOT calculations
     }
 }

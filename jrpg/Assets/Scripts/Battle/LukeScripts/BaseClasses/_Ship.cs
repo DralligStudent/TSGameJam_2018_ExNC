@@ -20,7 +20,6 @@ public class _Ship : ScriptableObject
     public _Shield[] s_Shields;
     public _Weapon[] s_Weapons;
     public _Equipment[] s_Equipment;
-    public ScriptableObject s_WHAT;
     //temporarry storage for array stuff, may be null now
     /*
     private _Engine[] p_s_Engine;
@@ -102,19 +101,18 @@ public class _Ship : ScriptableObject
         s_Cur_Health = s_Max_Health - s_Damage_Taken;
     }
     */
-    /*
-    protected void s_Call() //output all of the values in the ship to the debug
+    
+    protected void s_Call_Locked() //output all of the Locked Values(ie, the values not altered by the ships equipment. does not include shields)
     {
+
         Debug.Log("Health = " + s_Cur_Health);
-        Debug.Log("Shield = " + s_Shield);
         Debug.Log("Speed = " + s_Speed);
         Debug.Log("XP = " + s_Xp);
         Debug.Log("Size = " + s_Size);
         Debug.Log("Agility = " + s_Agility);
         Debug.Log("Weight = " + s_Weight);
-        Debug.Log("Shiled Rate = " + s_Shield_Rate);
     }
-    */
+    
     /*
     protected void s_Set_Arrays(int _En, int _Sh, int _W, int _Eq)
     {
