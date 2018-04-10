@@ -9,7 +9,7 @@ public class BattleManager : MonoBehaviour
     public PlayerFleet Player;
     public EnemyFleet Enemy;
     
-    public bool isActive;
+    public bool isActive; //used to set the turn going, allows for
     protected TurnAction[] Turns;
     public GameObject[] P_Ship_Array;
     public GameObject[] E_Ship_Array;
@@ -153,7 +153,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        foreach (GameObject G in P_Ship_Array)
+        foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
         {
             active_Ship = G;
             set_Action = false;
@@ -166,8 +166,17 @@ public class BattleManager : MonoBehaviour
 
         /*foreach (TurnAction a in Turns)
         {
-            a.Action();
-        }*/
+            a.Action(); //run the action.
+            StartCoroutine(b_Turn_Anim_Timer()); 
+            /*play a timer, used so that an animation can play.
+             * this means that when finalised, a function for animations should go here
+             * the reason ive chosen this route over others is so that the calculations are only done 
+             * when needed in the turn resolution, rather than having to keep a 
+             * hold of the changes throughout the battle elsewhere the changes 
+             * only happen when they need to.
+             * 
+            */
+        //}*/
 
         b_Post_Action_Call();
 
@@ -183,6 +192,10 @@ public class BattleManager : MonoBehaviour
          * 
          * 
          * 
+         * 
+         */
+        b_Update_Hold();
+        /*techincally this is redundant, as nothing of note needs to happen here, and the loop can continue. however should i need to hold i have the function
          * 
          */
     }
@@ -250,5 +263,15 @@ public class BattleManager : MonoBehaviour
     void b_Win_Conditions()
     {
         //function used to check every win/loss condition
+    }
+
+    IEnumerator b_Turn_Anim_Timer()
+    {
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator b_Update_Hold()
+    {
+        yield return new WaitUntil(() => isActive == true);
     }
 }

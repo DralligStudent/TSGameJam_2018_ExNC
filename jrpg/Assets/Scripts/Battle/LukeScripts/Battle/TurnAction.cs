@@ -97,6 +97,8 @@ public class TurnAction : MonoBehaviour
                 foreach (_Shield S in c_Ship.GetComponent<_Ship>().s_Shields)
                 {
                     S.sh_boost_action(); // fix implementation of shield boosting
+                                         //Boosting will provide a quick surge of shields to the player but they will 
+                                         //not recieve the turn recharge the following turn
                 }
                //IMPLEMENT FUNCTIONALITY TO BOOST REGEN SHIELDS
                break;
