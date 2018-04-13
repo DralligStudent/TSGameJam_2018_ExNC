@@ -6,7 +6,7 @@ public class moveOnGrid : MonoBehaviour {
 
     private int count = 0;//To make sure the ship only moves one grid space at a time
     public float gridSquareSize = 1;//The size of each grid square in unity's units
-    public int moveDelay = 30;//The amount of updates before the object can move again after moving
+    public int moveDelay = 10;//The amount of updates before the object can move again after moving
     public Vector3 originalCoord;//The coordinates before the ship moves
     public Vector3 targetCoord;//The coordinates where the ship will move towards
     public int moveUpdateAmount = 10;//how many updates it takes to get to destintaion tile should be less than move delay to avoid complications
