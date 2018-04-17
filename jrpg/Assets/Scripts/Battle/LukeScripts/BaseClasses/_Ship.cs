@@ -41,6 +41,7 @@ public class _Ship : ScriptableObject
     protected int s_Level; //Current Ship Level
     protected int s_Shield_Rate; //Amount the shields recharges per tick
     protected int s_Evasivness;
+
     /*
     protected int s_Max_Wep; //max number of weapon slots on ship
     protected int s_Max_Sh; // max number of shield slots on ship

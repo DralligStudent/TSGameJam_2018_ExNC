@@ -16,7 +16,7 @@ public class BattleManager : MonoBehaviour
     public GameObject active_Ship;
 
     private bool set_Action = false;
-
+    private bool x = false;
     
     public enum attack_Choice
     {
@@ -128,6 +128,7 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         /*
          */
         b_Pre_Action_Call();//this triggers actions before turn choices
@@ -194,7 +195,9 @@ public class BattleManager : MonoBehaviour
          * 
          * 
          */
+        StartCoroutine(b_Turn_Anim_Timer());
         b_Update_Hold();
+        StartCoroutine(b_test());
         /*techincally this is redundant, as nothing of note needs to happen here, and the loop can continue. however should i need to hold i have the function
          * 
          */
@@ -202,6 +205,8 @@ public class BattleManager : MonoBehaviour
 
     void b_Set_Turn()
     {
+
+
         /*
          * Set the active ship in ui
          */
@@ -214,7 +219,10 @@ public class BattleManager : MonoBehaviour
          * 
          */
 
+        while (a_Choice == attack_Choice.Null || d_Choice == defense_Choice.Null || e_Choice == equipment_Choice.Null)
+        {
 
+        }
 
         /*
          * Create a turnaction and add to the que of turns.
@@ -272,6 +280,21 @@ public class BattleManager : MonoBehaviour
     {
         //function used to check every win/loss condition
     }
+
+    IEnumerator b_test()
+    {
+        Debug.Log("wasaer");
+        while (x == false)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                x = true;
+            }
+            yield return null;
+        }
+        Debug.Log("wasaer2");
+    }
+
 
     IEnumerator b_Turn_Anim_Timer()
     {
