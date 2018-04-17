@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerInteractScripted : MonoBehaviour {
     public GameObject player;
@@ -23,24 +24,37 @@ public class playerInteractScripted : MonoBehaviour {
             {
                 encounterTrigger = true;
                 //move to prebattle
+                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
+                
             }
             if (player.transform.position.z == transform.position.z && player.transform.position.x - transform.position.x == -1 && player.transform.rotation.eulerAngles.y == 90 && Input.GetKeyDown(KeyCode.Return))
             {
                 encounterTrigger = true;
                 //move to prebattle
+                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }
             if (player.transform.position.x == transform.position.x && player.transform.position.z - transform.position.z == 1 && player.transform.rotation.eulerAngles.y == 180 && Input.GetKeyDown(KeyCode.Return))
             {
                 encounterTrigger = true;
                 //move to prebattle
+                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }
             if (player.transform.position.z == transform.position.z && player.transform.position.x - transform.position.x == 1 && player.transform.rotation.eulerAngles.y == 270 && Input.GetKeyDown(KeyCode.Return))
             {
                 encounterTrigger = true;
                 //move to prebattle
+                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }
         }
