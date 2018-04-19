@@ -186,6 +186,12 @@ public class _Ship : ScriptableObject
     {
         return s_Speed;
     }
+
+    public float[] s_Get_Val()
+    {
+        float[] values = new float[];
+        return values;
+    }
     /*
     public void s_outOfBattle_Health()
     {

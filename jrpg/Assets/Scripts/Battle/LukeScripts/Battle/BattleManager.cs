@@ -5,10 +5,10 @@ using System;
 
 public class BattleManager : MonoBehaviour
 {
-    
+
     public PlayerFleet Player;
     public EnemyFleet Enemy;
-    
+
     public bool isActive; //used to set the turn going, allows for
     protected TurnAction[] Turns;
     public GameObject[] P_Ship_Array;
@@ -117,7 +117,7 @@ public class BattleManager : MonoBehaviour
         {
             //c_wep. (Set the weapons in UI)
         }
-        
+
     }
 
     // Update is called once per frame
@@ -148,6 +148,8 @@ public class BattleManager : MonoBehaviour
                 c_Battle = battle_State.Win;
             }
         }
+
+        StartCoroutine(b_Set_Turn());
 
         foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
         {
@@ -191,10 +193,10 @@ public class BattleManager : MonoBehaviour
          * 
          * 
          */
-         /*
-        StartCoroutine(b_Turn_Anim_Timer());
-        b_Update_Hold();
-        StartCoroutine(b_test());*/
+        /*
+       StartCoroutine(b_Turn_Anim_Timer());
+       b_Update_Hold();
+       StartCoroutine(b_test());*/
         /*techincally this is redundant, as nothing of note needs to happen here, and the loop can continue. however should i need to hold i have the function
          * 
          */
@@ -214,13 +216,16 @@ public class BattleManager : MonoBehaviour
          * Some Ui code for selecting the thing
          * 
          */
+        Debug.Log("terst");
 
         while (at_Choice == e_Choice.eNull || de_Choice == e_Choice.eNull || eq_Choice == e_Choice.eNull)
         {
-            b_Turn_Hold(); //replace this with a yield for ui input that sets the attack choice
+            Debug.Log("terst1");
+            yield return null;
+            //b_Turn_Hold(); //replace this with a yield for ui input that sets the attack choice
 
-            
-                
+
+
             /*
             if (at_Choice != e_Choice.eNull)
             {
@@ -233,7 +238,7 @@ public class BattleManager : MonoBehaviour
             //Wait for ui to select attack
 
             //wait again for ui to select target
-            
+
             //Set enemy ship to en_Ship;
         }
 
@@ -280,7 +285,7 @@ public class BattleManager : MonoBehaviour
         int x; //define its position
         Turns[x] = n_Turn; //add to array of turns
         */
-        return null;
+        yield break;
     }
 
     void b_Speed_Sort()
@@ -304,13 +309,13 @@ public class BattleManager : MonoBehaviour
     void b_Action_Set()
     {
         //Function used to set all the player actions
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
         //TurnAction n_Turn = new TurnAction(active_Ship, )
     }
 
@@ -352,5 +357,17 @@ public class BattleManager : MonoBehaviour
     IEnumerator b_Turn_Hold()
     {
         yield return null;
+    }
+
+    void b_Enemy_Turn()
+    {
+        foreach (GameObject eShip in E_Ship_Array)
+        {//This is where the enemy turns are decided uninteliggently
+            _Weapon en_Wep = eShip.GetComponent<_Ship>().s_Get_Weapon(0);
+            //Produce random number to pick a player ship to attack
+            int rn = UnityEngine.Random.Range(0, P_Ship_Array.Length);
+            //produce attack turn
+            TurnAction nTurn = new TurnAction(eShip, P_Ship_Array[rn], en_Wep);
+        }
     }
 }
