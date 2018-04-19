@@ -157,20 +157,34 @@ public class PlayerInventory : MonoBehaviour {
     }
 
 
+    //This will add a ship game object, named "TestShip" to the player's inventory,
+    //provided it and the player's inventory exsists in the current scene.
+    //These WILL NOT work if those two objects do not exsist.
     public void DebugAddShipButton()
     {
         SetInven("Ships");
-        GameObject testy = new GameObject("Namey");
-        m_inventory.AddItem(testy);
+        GameObject testy = GameObject.Find("TestShip");
+        Debug.Log(testy);
+        m_Player_Inventory.AddItem(testy);
         Debug.Log("Added a ship to the inventory.");
         //Destroy(testy);
     }
     public void DebugTestAccessShipButton()
     {
         SetInven("Ships");
-        GameObject Shipy = m_inventory.shipInven[3];
-        Debug.Log(m_inventory.shipInven[3]);
+        GameObject Shipy = m_Player_Inventory.shipInven[3];
+        Debug.Log(m_Player_Inventory.shipInven[3]);
         Debug.Log(Shipy);
+    }
+
+    public void DebugTestDisplayInven()
+    {
+        SetInven("Ships");
+        List<string> testlist = DisplayInven();
+        for(int i = 0; i < testlist.Count; i++)
+        {
+            Debug.Log(testlist[i].ToString());
+        }
     }
 
     //Use the index from DisplayInven() to make sure the correct item is selected.
@@ -311,6 +325,10 @@ public class PlayerInventory : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.N))
         {
             DebugTestAccessShipButton();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            DebugTestDisplayInven();
         }
 	}
 }
