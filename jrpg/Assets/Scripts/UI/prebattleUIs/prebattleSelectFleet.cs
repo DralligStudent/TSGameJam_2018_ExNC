@@ -20,6 +20,9 @@ public class prebattleSelectFleet : MonoBehaviour {
 	public GameObject fleet, prebattleSetup;
 	public GameObject currentlySelected, shipStats, fleetInventory;
 
+    private PreBattleState preBattleState;
+   
+
     // Use this for initialization
     void Start ()
     {
@@ -39,6 +42,9 @@ public class prebattleSelectFleet : MonoBehaviour {
         targetSprite6 = target6.GetComponent<SpriteRenderer>();
         targetSprite7 = target7.GetComponent<SpriteRenderer>();
         targetSprite8 = target8.GetComponent<SpriteRenderer>();
+
+        preBattleState = GameObject.Find("PreBattleState").GetComponent<PreBattleState>();
+        
     }
 	
 	// Update is called once per frame
@@ -149,31 +155,39 @@ public class prebattleSelectFleet : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             //needs to output to game manager what position you have selected
-            switch (currentSelection)
+            switch (currentSelection-1)
             {
-                case 8:
-                    print("attack 8");
-                    break;
                 case 7:
                     print("attack 7");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 6:
                     print("attack 6");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 5:
                     print("attack 5");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 4:
                     print("attack 4");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 3:
                     print("attack 3");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 2:
                     print("attack 2");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 case 1:
                     print("attack 1");
+                    preBattleState.setFormationIndex(currentSelection - 1);
+                    break;
+                case 0:
+                    print("attack 0");
+                    preBattleState.setFormationIndex(currentSelection - 1);
                     break;
                 default:
                     print("error with attack target");

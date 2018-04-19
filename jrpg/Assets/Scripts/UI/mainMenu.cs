@@ -9,6 +9,11 @@ public class mainMenu : MonoBehaviour {
     public GameObject creditsSelect;
     public GameObject quitSelect;
 
+    public GameObject PlayerInven;
+    private PlayerInventory playerInventory;
+    public GameObject startship1;
+    public GameObject startship2;
+
     public Renderer playRend;//the button renderers
     public Renderer creditsRend;
     public Renderer quitRend;
@@ -63,7 +68,12 @@ public class mainMenu : MonoBehaviour {
 		{
 			if (currentSelection == 1)
 			{
-				SceneManager.LoadScene("overworldScene");//loads the overWorld scene
+                playerInventory = PlayerInven.GetComponent<PlayerInventory>();
+                playerInventory.SetInven("Ships");
+                playerInventory.AddItem(startship1);
+                playerInventory.AddItem(startship2);
+
+				SceneManager.LoadScene("prebattleScene");//loads the overWorld scene
 			}
 			else if(currentSelection == 2)
 			{

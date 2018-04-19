@@ -36,17 +36,23 @@ public class PreBattleState : MonoBehaviour {
     int[] battleFormation = new int[10];
 
     //UI can call this function with a send message.
-    void setFormationIndex(int newFormationIndex)
+    //Selects a formation slot.
+    public void setFormationIndex(int newFormationIndex)
     {
         formationIndex = newFormationIndex;
     }
 
-    void setInventoryIndex(int newInventoryIndex)
+    //Function to select the index in the ship inventory of the ship we want.
+    //We'll put this data(the inventory index) into the battleformation array.
+    //tldr Selects a ship. (Give the inventory index where the ship is in the player's ship inventory)
+    public void setInventoryIndex(int newInventoryIndex)
     {
         inventoryIndex = newInventoryIndex;
     }
 
-    void setBattleFormation()
+    //Assigns data to the battleformation array based on the selected formation slot.
+    //tldr puts a selected ship into the formation at the spot the player picked.
+    public void setBattleFormation()
     {
         battleFormation[formationIndex] = inventoryIndex;
     }
@@ -64,7 +70,7 @@ public class PreBattleState : MonoBehaviour {
         fleetPoints = commandLevel * 100;
     }
 
-    void CreateFleet()
+    public void CreateFleet()
     {
         for (int i = 0; i < fleetSize; i++)
         {
