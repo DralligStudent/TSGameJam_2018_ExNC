@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class prebattleSelectFleet : MonoBehaviour {
 
@@ -16,11 +17,17 @@ public class prebattleSelectFleet : MonoBehaviour {
 
     public GameObject target1, target2, target3, target4, target5, target6, target7, target8;//all the ship game objects
     SpriteRenderer targetSprite1, targetSprite2, targetSprite3, targetSprite4, targetSprite5, targetSprite6, targetSprite7, targetSprite8;//all the ship sprite renderers
+    Image targetImage1, targetImage2, targetImage3, targetImage4, targetImage5, targetImage6, targetImage7, targetImage8;
 
-	public GameObject fleet, prebattleSetup;
+
+    public GameObject fleet, prebattleSetup;
 	public GameObject currentlySelected, shipStats, fleetInventory;
 
     private PreBattleState preBattleState;
+    public PlayerInventory playerInventory;
+
+    public GameObject detectorObject;
+    detector detectorScript;
    
 
     // Use this for initialization
@@ -34,7 +41,7 @@ public class prebattleSelectFleet : MonoBehaviour {
         else
             selectColour = fleetColour;//friendly fleet have green coulours if selected
 
-        targetSprite1 = target1.GetComponent<SpriteRenderer>();//gets every ships sprite renderer
+        targetSprite1 = target1.GetComponent<SpriteRenderer>();//gets every ships sprite renderer for the border
         targetSprite2 = target2.GetComponent<SpriteRenderer>();
         targetSprite3 = target3.GetComponent<SpriteRenderer>();
         targetSprite4 = target4.GetComponent<SpriteRenderer>();
@@ -43,8 +50,19 @@ public class prebattleSelectFleet : MonoBehaviour {
         targetSprite7 = target7.GetComponent<SpriteRenderer>();
         targetSprite8 = target8.GetComponent<SpriteRenderer>();
 
+        targetImage1 = target1.GetComponentInChildren<Image>();//gets every ships Image
+        targetImage2 = target2.GetComponentInChildren<Image>();
+        targetImage3 = target3.GetComponentInChildren<Image>();
+        targetImage4 = target4.GetComponentInChildren<Image>();
+        targetImage5 = target5.GetComponentInChildren<Image>();
+        targetImage6 = target6.GetComponentInChildren<Image>();
+        targetImage7 = target7.GetComponentInChildren<Image>();
+        targetImage8 = target8.GetComponentInChildren<Image>();
+
         preBattleState = GameObject.Find("PreBattleState").GetComponent<PreBattleState>();
-        
+        playerInventory = GameObject.Find("P_Inven").GetComponent<PlayerInventory>();
+
+        detectorScript = detectorObject.GetComponent<detector>();
     }
 	
 	// Update is called once per frame
@@ -155,39 +173,51 @@ public class prebattleSelectFleet : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             //needs to output to game manager what position you have selected
-            switch (currentSelection-1)
+            switch (currentSelection)
             {
+                case 8:
+                    print("attack 8");
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage8;
+                    break;
                 case 7:
                     print("attack 7");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage7;
                     break;
                 case 6:
                     print("attack 6");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage6;
                     break;
                 case 5:
                     print("attack 5");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage5;
                     break;
                 case 4:
                     print("attack 4");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage4;
                     break;
                 case 3:
                     print("attack 3");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage3;
                     break;
                 case 2:
                     print("attack 2");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage2;
                     break;
                 case 1:
                     print("attack 1");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
+                    detectorScript.targetImage = targetImage1;
                     break;
                 case 0:
                     print("attack 0");
-                    preBattleState.setFormationIndex(currentSelection - 1);
+                    preBattleState.setFormationIndex(currentSelection);
                     break;
                 default:
                     print("error with attack target");
@@ -197,34 +227,58 @@ public class prebattleSelectFleet : MonoBehaviour {
 			currentlySelected.SetActive (true); shipStats.SetActive (true); fleetInventory.SetActive (true);//enables the 3 that allow the player to select a ship
         }
 
-		if (Input.GetKeyDown(KeyCode.Q))//q will clear that position of whatever ship is currently in that slot
+		if (Input.GetKeyDown(KeyCode.Z))//Z will clear that position of whatever ship is currently in that slot
 		{
 			//needs to output to game manager what position to clear
 			switch (currentSelection)
 			{
 			case 8:
 				print("clear 8");
-				break;
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage8.sprite = null;
+                break;
 			case 7:
 				print("clear 7");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage7.sprite = null;
 				break;
 			case 6:
 				print("clear 6");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage6.sprite = null;
 				break;
 			case 5:
 				print("clear 5");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage5.sprite = null;
 				break;
 			case 4:
 				print("clear 4");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage4.sprite = null;
 				break;
 			case 3:
 				print("clear 3");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage3.sprite = null;
 				break;
 			case 2:
 				print("clear 2");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage2.sprite = null;
 				break;
 			case 1:
 				print("clear 1");
+                preBattleState.setFormationIndex(currentSelection);
+                preBattleState.battleFormation[preBattleState.getFormationIndex()] = -1;
+                targetImage1.sprite = null;
 				break;
 			default:
 				print("error with clear target");

@@ -321,7 +321,7 @@ public class PlayerInventory : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.J)){
-            DebugAddShipButton();
+            //DebugAddShipButton();
         }
         if (Input.GetKeyDown(KeyCode.N))
         {

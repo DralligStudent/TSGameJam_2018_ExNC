@@ -370,6 +370,7 @@ MonoBehaviour:
   creditsSelect: {fileID: 1131583270}
   quitSelect: {fileID: 1395694908}
   PlayerInven: {fileID: 230279893}
+  dummyShip: {fileID: 1218473717339784, guid: 758d5492bf140244dbbe93b6de5b17a8, type: 2}
   startship1: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   startship2: {fileID: 1708296648110580, guid: 2507c4e0af66e0b4299441315422b360, type: 2}
   playRend: {fileID: 0}
@@ -510,6 +511,50 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ad334a156c2f844db016562b450333a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &849292167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 849292169}
+  - component: {fileID: 849292168}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &849292168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849292167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f87ff52ed0be54ca414d4493c52fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleStart: 0
+  Player_Pos: {fileID: 0}
+  e_Fleet: {fileID: 0}
+  GSM: 0
+--- !u!4 &849292169
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849292167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.521726, y: 1.8612546, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919306482
 GameObject:
   m_ObjectHideFlags: 0

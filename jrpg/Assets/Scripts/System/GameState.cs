@@ -72,7 +72,10 @@ public class GameState : MonoBehaviour {
             case GameStateMachine.gs_Battle:
                 if (N_Battle == null && battleStart)
                 {
-                    N_Battle = new BattleManager(PreBattleState.m_PreBattleState.currentPlayerFleet, PreBattleState.m_PreBattleState.currentEnemyFleet);
+                    //N_Battle = new BattleManager(PreBattleState.m_PreBattleState.currentPlayerFleet, PreBattleState.m_PreBattleState.currentEnemyFleet);
+                    BattleManager nBattle = this.gameObject.AddComponent<BattleManager>();
+                    //nBattle.Player = (the player fleet)
+                    //nBattle.Enemy = (the enemy fleet)
                     battleStart = false;
                 }
                 else

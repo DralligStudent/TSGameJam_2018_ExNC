@@ -11,6 +11,7 @@ public class mainMenu : MonoBehaviour {
 
     public GameObject PlayerInven;
     private PlayerInventory playerInventory;
+    public GameObject dummyShip;
     public GameObject startship1;
     public GameObject startship2;
 
@@ -70,6 +71,7 @@ public class mainMenu : MonoBehaviour {
 			{
                 playerInventory = PlayerInven.GetComponent<PlayerInventory>();
                 playerInventory.SetInven("Ships");
+                playerInventory.AddItem(dummyShip);
                 playerInventory.AddItem(startship1);
                 playerInventory.AddItem(startship2);
 
