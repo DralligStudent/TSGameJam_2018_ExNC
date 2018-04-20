@@ -15,6 +15,7 @@ public class BattleManager : MonoBehaviour
     public GameObject[] E_Ship_Array;
     public GameObject active_Ship;
     private GameObject en_Ship;
+    private TurnAction en_Turn;
 
     private bool set_Action = false;
     private bool x = false;
@@ -74,8 +75,15 @@ public class BattleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        int tLength = P_Ship_Array.Length + E_Ship_Array.Length;
+        Turns = new TurnAction[tLength];
+        
+        P_Ship_Array = new GameObject[1];
+        P_Ship_Array[0] = GameObject.Find("newshipmeme");
         //c_Battle = battle_State.PlayerTurn;
         c_Battle = battle_State.PrePhase;
+        E_Ship_Array = new GameObject[1];
+        E_Ship_Array[0] = GameObject.Find("wagwanpiffting");
 
 
 
@@ -129,6 +137,7 @@ public class BattleManager : MonoBehaviour
         b_Pre_Action_Call();//this triggers actions before turn choices
         b_Action_Set();//turn choices are made
 
+        b_Enemy_Turn();
 
         for (int i = 0; i < P_Ship_Array.Length; i++)
         {
@@ -149,19 +158,32 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(b_Set_Turn());
+        //StartCoroutine(b_Set_Turn());
 
-        foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
+        //new plan
+        /*While x (an int already determined) in turn array is null
+         * start a turn with x in player game array in mind
+         * this means that the player will always come first in battle
+         * and it prevents issues with looping over itself.
+         * yaaaaayy
+         */
+        if (set_Action == true)
         {
-            active_Ship = G;
-            set_Action = false;
-            if (set_Action == false)
+            foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
             {
-                Debug.Log("xyz");
-                StartCoroutine(b_Set_Turn());
+                active_Ship = G;
+                //set_Action = true;
+                if (set_Action == true)
+                {
+                    Debug.Log("xyz2");
+                    StartCoroutine(b_Set_Turn());
+                    Debug.Log("im still goin");
+                }
+                //somehow mod this to make sure we can only set an action for each ship and on ui input
+                set_Action = false;
             }
-            set_Action = true;
         }
+
 
         /*foreach (TurnAction a in Turns)
         {
@@ -204,7 +226,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator b_Set_Turn()
     {
-
+        //int ac_Choice = 0;
         /*
          * Set the active ship in ui
          */
@@ -254,12 +276,12 @@ public class BattleManager : MonoBehaviour
         switch (t_Set)
         {
             case t_Choice.attack:
-                TurnAction nTurn1 = new TurnAction(active_Ship, en_Ship, active_Ship.GetComponent<_Ship>().s_Get_Weapon((int)at_Choice)); //theoretically that works, cant check until later though
+                TurnAction nTurn1 = new TurnAction(active_Ship, en_Ship, active_Ship.GetComponent<publicShip>().ShipClass.s_Get_Weapon((int)at_Choice)); //theoretically that works, cant check until later though
                 //Turns[x] = nTurn;
                 break;
 
             case t_Choice.defense:
-                TurnAction nTurn2 = new TurnAction(active_Ship, active_Ship.GetComponent<_Ship>().s_Shields[0]);
+                TurnAction nTurn2 = new TurnAction(active_Ship, active_Ship.GetComponent<publicShip>().ShipClass.s_Shields[0]);
                 //add to turn action list
                 break;
 
@@ -363,11 +385,29 @@ public class BattleManager : MonoBehaviour
     {
         foreach (GameObject eShip in E_Ship_Array)
         {//This is where the enemy turns are decided uninteliggently
-            _Weapon en_Wep = eShip.GetComponent<_Ship>().s_Get_Weapon(0);
+            _Weapon en_Wep = eShip.GetComponent<publicShip>().ShipClass.s_Get_Weapon(0);
             //Produce random number to pick a player ship to attack
             int rn = UnityEngine.Random.Range(0, P_Ship_Array.Length);
             //produce attack turn
-            TurnAction nTurn = new TurnAction(eShip, P_Ship_Array[rn], en_Wep);
+            /*TurnAction nturn = new TurnAction(eShip, P_Ship_Array[rn], en_Wep);
+            GameObject.Find("TurnHolder").AddComponent<nturn>;
+            */
+            TurnAction nturn = GameObject.Find("TurnHolder").AddComponent<TurnAction>();
+            nturn.c_Ship = eShip;
+            nturn.t_Ship = P_Ship_Array[rn];
+            nturn.c_Wep = en_Wep;
+            nturn.c_Action = TurnAction.action_Type.Weapon;
+
+            Debug.Log(nturn);
+            for (int i = 0; i > Turns.Length; i++)
+            {
+                if(Turns[i] = null)
+                {
+                    Turns[i] = nturn;
+                    break;
+                }
+            }
+            Debug.Log("we did it reddit");
         }
     }
 }
