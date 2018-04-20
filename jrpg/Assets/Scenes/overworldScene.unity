@@ -2021,7 +2021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSquareSize: 1
-  moveDelay: 30
+  moveDelay: 10
   originalCoord: {x: 0, y: 0, z: 0}
   targetCoord: {x: 0, y: 0, z: 0}
   moveUpdateAmount: 10
