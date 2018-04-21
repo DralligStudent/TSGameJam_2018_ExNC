@@ -27,9 +27,12 @@ public class attackSelection : MonoBehaviour {
 
     public GameObject targets;//the player or enemy fleet
     private bool active = true;
+    public BattleManager bm;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        bm = GameObject.Find("BattleManageSystem").GetComponent<BattleManager>();
         currentSelection = 1;
         numButtons = 4;
 
@@ -90,6 +93,11 @@ public class attackSelection : MonoBehaviour {
                 if (currentSelection == 1)//the player selected the first action
                 {
                     currentAction = "placeholder1";//this needs to tell the gamemanager what attack to do
+                    //Debug.Log("attack chosen");
+                    var newTurn = GameObject.Find("TurnHolder").AddComponent<TurnAction>();
+                    //set the new ship
+                    //set the 
+
                 }
                 else if (currentSelection == 2)
                 {

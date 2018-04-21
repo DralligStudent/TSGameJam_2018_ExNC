@@ -29,6 +29,7 @@ public class targetSelect : MonoBehaviour {
             selectColour = fleetColour;//friendly fleet have green coulours if selected
 
         targetSprite1 = target1.GetComponent<SpriteRenderer>();//gets every ships sprite renderer
+        Debug.Log(targetSprite1);
         targetSprite2 = target2.GetComponent<SpriteRenderer>();
         targetSprite3 = target3.GetComponent<SpriteRenderer>();
         targetSprite4 = target4.GetComponent<SpriteRenderer>();

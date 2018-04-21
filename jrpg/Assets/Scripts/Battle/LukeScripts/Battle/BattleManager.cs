@@ -11,14 +11,17 @@ public class BattleManager : MonoBehaviour
 
     public bool isActive; //used to set the turn going, allows for
     protected TurnAction[] Turns;
-    public GameObject[] P_Ship_Array;
-    public GameObject[] E_Ship_Array;
+    public GameObject[] P_Ship_Array = new GameObject[8];
+    public GameObject[] E_Ship_Array = new GameObject[8];
     public GameObject active_Ship;
     private GameObject en_Ship;
     private TurnAction en_Turn;
 
     private bool set_Action = false;
+    private bool c_Action_Set = false;
     private bool x = false;
+
+    public GameObject aSelect = GameObject.Find("attackSelection");
 
     public enum e_Choice
     {
@@ -34,6 +37,7 @@ public class BattleManager : MonoBehaviour
         bNull = 0,
         PrePhase,
         PlayerTurn,
+        EnemyTurn,
         ActionPhase,
         Loss,
         Win
@@ -64,26 +68,39 @@ public class BattleManager : MonoBehaviour
     {
         Player = p_Fleet;
         Enemy = e_Fleet;
+        //P_Ship_Array = Player.get_Fleet();
 
-        P_Ship_Array = new GameObject[Player.get_FleetSize()];
         P_Ship_Array = Player.get_Fleet();
 
-        E_Ship_Array = new GameObject[Enemy.get_FleetSize()];
+        //E_Ship_Array = new GameObject[Enemy.get_FleetSize()];
         E_Ship_Array = Enemy.get_Fleet();
+    }
+
+    public void setFleets(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
+    {
+        Player = p_Fleet;
+        Enemy = e_Fleet;
+        
+        //P_Ship_Array = new GameObject[Player.get_FleetSize()];
+        P_Ship_Array = Player.get_Fleet();
+
+        //E_Ship_Array = new GameObject[Enemy.get_FleetSize()];
+        //E_Ship_Array = Enemy.get_Fleet();
     }
 
     // Use this for initialization
     void Start()
     {
+        //set the length of the ship arrays at or before this point to make sure the turn array is the correct length
         int tLength = P_Ship_Array.Length + E_Ship_Array.Length;
         Turns = new TurnAction[tLength];
-        
+        /*
         P_Ship_Array = new GameObject[1];
         P_Ship_Array[0] = GameObject.Find("newshipmeme");
         //c_Battle = battle_State.PlayerTurn;
         c_Battle = battle_State.PrePhase;
         E_Ship_Array = new GameObject[1];
-        E_Ship_Array[0] = GameObject.Find("wagwanpiffting");
+        E_Ship_Array[0] = GameObject.Find("wagwanpiffting");*/
 
 
 
@@ -99,6 +116,8 @@ public class BattleManager : MonoBehaviour
         //TurnAction turn = new TurnAction(rat, mouse, rat.s_Get_Weapon((int)attack_Choice.A));
         //Turns[0] = turn;
         //Array.Sort(Ship_Array, delegate (_Ship x, _Ship y) { return x.s_Get_Speed().CompareTo(y.s_Get_Speed()); });
+
+        active_Ship = P_Ship_Array[0];
     }
 
     /*void b_Turn(_Ship a_Ship, _Ship t_Ship, attack_Choice a_Action)
@@ -131,13 +150,33 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        /*
+        if (Turns.Length != P_Ship_Array.Length + E_Ship_Array.Length)
+        {
+            
+        }*/
+        /*
+        Debug.Log(aSelect);
         Debug.Log("xyz");
         /*
          */
-        b_Pre_Action_Call();//this triggers actions before turn choices
-        b_Action_Set();//turn choices are made
 
-        b_Enemy_Turn();
+        //Debug.Log(P_Ship_Array[0]);
+        b_Pre_Action_Call();//this triggers actions before turn choices
+
+        /*
+        while (!c_Action_Set)
+        {
+            StartCoroutine(b_Set_Turn());
+        }
+        */
+
+
+
+        Debug.Log("this failed");
+
+        //b_Action_Set();//turn choices are made redundant
 
         for (int i = 0; i < P_Ship_Array.Length; i++)
         {
@@ -167,6 +206,7 @@ public class BattleManager : MonoBehaviour
          * and it prevents issues with looping over itself.
          * yaaaaayy
          */
+         
         if (set_Action == true)
         {
             foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
@@ -184,6 +224,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        
 
         /*foreach (TurnAction a in Turns)
         {
@@ -198,7 +239,13 @@ public class BattleManager : MonoBehaviour
              * 
             */
         //}*/
+        if (c_Battle == battle_State.EnemyTurn)
+        {
+            b_Enemy_Turn();
+        }
 
+
+        run_Actions();
         b_Post_Action_Call();
 
 
@@ -222,6 +269,8 @@ public class BattleManager : MonoBehaviour
         /*techincally this is redundant, as nothing of note needs to happen here, and the loop can continue. however should i need to hold i have the function
          * 
          */
+
+
     }
 
     IEnumerator b_Set_Turn()
@@ -339,6 +388,15 @@ public class BattleManager : MonoBehaviour
 
 
         //TurnAction n_Turn = new TurnAction(active_Ship, )
+    }
+
+    void run_Actions()
+    {
+        foreach (TurnAction TA in Turns)
+        {
+            TA.Action();
+            b_Turn_Anim_Timer();
+        }
     }
 
     void b_Win_Conditions()
