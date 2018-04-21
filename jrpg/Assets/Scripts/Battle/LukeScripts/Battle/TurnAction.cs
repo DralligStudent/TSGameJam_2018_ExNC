@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TurnAction : MonoBehaviour
 {
-    GameObject c_Ship;
-    GameObject t_Ship;
-    _Weapon c_Wep;
-    _Shield c_Shield;
-    _Engine c_Eng;
-    _Equipment c_Equ;
+    public GameObject c_Ship;
+    public GameObject t_Ship;
+    public _Weapon c_Wep;
+    public _Shield c_Shield;
+    public _Engine c_Eng;
+    public _Equipment c_Equ;
 
-    enum action_Type
+    public enum action_Type
     {
         Weapon = 0,
         Shield,
@@ -19,7 +19,7 @@ public class TurnAction : MonoBehaviour
         Equipment
     };
 
-    action_Type c_Action;
+    public action_Type c_Action;
 
     public TurnAction(GameObject active_Ship, GameObject target_Ship, _Weapon a_Weapon)
     {
@@ -96,21 +96,24 @@ public class TurnAction : MonoBehaviour
                 //int s_boost = 0;
                 foreach (_Shield S in c_Ship.GetComponent<_Ship>().s_Shields)
                 {
-                    S.sh_boost_action();
+                    S.sh_boost_action(); // fix implementation of shield boosting
+                                         //Boosting will provide a quick surge of shields to the player but they will 
+                                         //not recieve the turn recharge the following turn
                 }
                //IMPLEMENT FUNCTIONALITY TO BOOST REGEN SHIELDS
                break;
             
             case action_Type.Engine:
+
                 /*IMPLEMENT FUNCTIONALITY TO ALLOW FOR AGILITY BOOST THROUGH GREATER ENGINE POWER*/
                break;
                 /*
             case action_Type.Equipment:
                 IMPLEMENT FUNCTIONALITY TO ALLOW FOR SPECIAL MOVES
                 break;
-                
+                */
             default:
-                break;*/
+                break;
         }
     }
 }

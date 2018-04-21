@@ -16,9 +16,10 @@ public class _Engine : ScriptableObject
     };
 
     [SerializeField]
-    protected float e_Power, e_Boost; //Engine output, engine boost value
+    protected float e_Power, e_Boost, e_Boost_Gain, e_Boost_Max; //Engine output, engine boost value, points added to boost turn, max level of the boost ammount
     [SerializeField]
     e_Class_Enum e_Class = e_Class_Enum.e_Null;
+    
 
     public float e_Get_Power()
     {
@@ -27,7 +28,12 @@ public class _Engine : ScriptableObject
 
     public float e_Get_Boost()
     {
-        return e_Boost;
+        if (e_Boost > (e_Boost_Max * 0.25))
+        {
+            e_Boost = 0;
+            return e_Boost;
+        }
+        return 0;
     }
 
     protected void e_Set_Power(int e)
