@@ -18,7 +18,6 @@ MonoBehaviour:
   s_Weapons:
   - {fileID: 11400000, guid: 9229986bc83112240b8ba3f46ca2180a, type: 2}
   s_Equipment: []
-  s_WHAT: {fileID: 11400000}
   s_Max_Health: 50
   s_Size: 20
   s_Agility: 10

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514dc5b7ec94c174d9ff9206751f8bd8, type: 3}
   m_Name: Amm1
   m_EditorClassIdentifier: 
+  a_Cur_Ammount: 500
   a_Type: 0
   a_Shield_Bias: 1
   a_Hull_Bias: 1

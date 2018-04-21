@@ -8,9 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3c6a16f53e0084b8d96abe8e326205, type: 3}
-  m_Name: t_shield
+  m_Script: {fileID: 11500000, guid: 79534918ba342a34cbc4b7f59cd339fc, type: 3}
+  m_Name: New Weapon 1
   m_EditorClassIdentifier: 
-  sh_Shield: 50
-  sh_Recharge: 10
-  sh_Boost: 40
+  w_Damage: 50
+  w_Class: 1
+  w_Type: 0
+  w_Ammo_Cap: 50
+  w_Ammo: {fileID: 11400000, guid: 2654b558c52ab074c8042d5c8b23f65e, type: 2}
