@@ -23,7 +23,7 @@ public class attackSelection : MonoBehaviour {
     public Color defaultColour = Color.white;
     public Color selectColour = new Color(0f, 0.7f, 1f, 1f);
 
-    public string currentAction;
+    public string currentAction = "null";
 
     public GameObject targets;//the player or enemy fleet
     private bool active = true;

@@ -588,6 +588,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224334156}
+  - component: {fileID: 224334157}
   m_Layer: 0
   m_Name: TurnHolder
   m_TagString: Untagged
@@ -608,6 +609,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224334157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224334155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e821d40d5e80ef64ea1a36a16df63441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_Ship: 0
+  currentAttackState: 0
+  BM: {fileID: 0}
+  AM: {fileID: 0}
+  AS: {fileID: 0}
+  TS: {fileID: 0}
 --- !u!1 &301818507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +3005,7 @@ MonoBehaviour:
   fleeSelection: {fileID: 433477681}
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
   selectColour: {r: 0, g: 0.7, b: 1, a: 1}
+  attackSelected: 
 --- !u!1 &1381579964
 GameObject:
   m_ObjectHideFlags: 0

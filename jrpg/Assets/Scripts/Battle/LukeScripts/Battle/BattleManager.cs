@@ -11,11 +11,14 @@ public class BattleManager : MonoBehaviour
 
     public bool isActive; //used to set the turn going, allows for
     protected TurnAction[] Turns;
+    public TurnAction CurrentTurn;
     public GameObject[] P_Ship_Array = new GameObject[8];
     public GameObject[] E_Ship_Array = new GameObject[8];
     public GameObject active_Ship;
+    public int act_Ship;
     private GameObject en_Ship;
     private TurnAction en_Turn;
+    public TurnTransfer TurnTransScript;
 
     private bool set_Action = false;
     private bool c_Action_Set = false;
@@ -39,6 +42,7 @@ public class BattleManager : MonoBehaviour
         PlayerTurn,
         EnemyTurn,
         ActionPhase,
+        PostAction,
         Loss,
         Win
     };
@@ -150,6 +154,35 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (TurnTransScript == null)
+        {
+            TurnTransScript = GameObject.Find("TurnHolder").GetComponent<TurnTransfer>();
+        }
+
+        if (TurnTransScript.currentAttackState == TurnTransfer.attackState.playerSet)
+        {
+            if (CurrentTurn.c_Ship != null && CurrentTurn.c_Wep != null && CurrentTurn.t_Ship != null)
+            {
+                Turns[act_Ship] = CurrentTurn;
+                if ((act_Ship + 1) >= P_Ship_Array.Length)
+                {
+                    TurnTransScript.currentAttackState = TurnTransfer.attackState.playerDone;
+                    c_Battle = battle_State.EnemyTurn;
+                }
+                else
+                {
+                    act_Ship++;
+                    TurnTransScript.current_Ship = act_Ship;
+                    CurrentTurn.c_Ship = null;
+                    CurrentTurn.c_Wep = null;
+                    CurrentTurn.t_Ship = null;
+                }
+            }
+        }
+
+
+
 
         /*
         if (Turns.Length != P_Ship_Array.Length + E_Ship_Array.Length)
@@ -174,19 +207,19 @@ public class BattleManager : MonoBehaviour
 
 
 
-        Debug.Log("this failed");
+        //Debug.Log("this failed");
 
         //b_Action_Set();//turn choices are made redundant
-
+        /*
         for (int i = 0; i < P_Ship_Array.Length; i++)
         {
             /*
              * THIS IS WHERE THE UI IS NEEDED SO I CAN SET THE RIGHT THINGS THAT I CANT THINK OF RIGHT NOW
              */
             //b_Set_Turn()
-
+            /*
         }
-
+        */
         if (Input.GetKey(KeyCode.K))
         {
             Debug.Log("Cheat win go");
@@ -206,7 +239,7 @@ public class BattleManager : MonoBehaviour
          * and it prevents issues with looping over itself.
          * yaaaaayy
          */
-         
+         /*
         if (set_Action == true)
         {
             foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
@@ -224,7 +257,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        
+        */
 
         /*foreach (TurnAction a in Turns)
         {
@@ -239,14 +272,20 @@ public class BattleManager : MonoBehaviour
              * 
             */
         //}*/
-        if (c_Battle == battle_State.EnemyTurn)
+
+        if (c_Battle == battle_State.EnemyTurn && TurnTransScript.currentAttackState == TurnTransfer.attackState.playerDone)
         {
             b_Enemy_Turn();
+            c_Battle = battle_State.ActionPhase;
         }
 
-
-        run_Actions();
-        b_Post_Action_Call();
+        if (c_Battle == battle_State.ActionPhase)
+        {
+            run_Actions();
+            c_Battle = battle_State.PostAction;
+        }
+        
+        //b_Post_Action_Call();
 
 
         if (E_Ship_Array.Length == 0)
