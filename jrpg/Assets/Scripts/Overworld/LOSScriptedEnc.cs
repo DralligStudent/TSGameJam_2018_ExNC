@@ -23,7 +23,7 @@ public class LOSScriptedEnc : MonoBehaviour {
         {
             if (transform.rotation.eulerAngles.y == 0)
             {
-                if (transform.position.x == player.transform.position.x && player.transform.position.z > transform.position.z)
+                if (transform.position.x == player.transform.position.x && player.transform.position.z > transform.position.z && player.transform.position.z - transform.position.z <= 5)
                 {
                     encounterTrigger = true;
                     //move to prebattle
@@ -35,7 +35,7 @@ public class LOSScriptedEnc : MonoBehaviour {
             }
             else if (transform.rotation.eulerAngles.y == 90)
             {
-                if (transform.position.z == player.transform.position.z && player.transform.position.x > transform.position.x)
+                if (transform.position.z == player.transform.position.z && player.transform.position.x > transform.position.x && player.transform.position.x - transform.position.x <= 5)
                 {
                     encounterTrigger = true;
                     //move to prebattle
@@ -47,7 +47,7 @@ public class LOSScriptedEnc : MonoBehaviour {
             }
             else if (transform.rotation.eulerAngles.y == 180)
             {
-                if (transform.position.x == player.transform.position.x && player.transform.position.z < transform.position.z)
+                if (transform.position.x == player.transform.position.x && player.transform.position.z < transform.position.z && transform.position.z - player.transform.position.z <= 5)
                 {
                     encounterTrigger = true;
                     //move to prebattle
@@ -59,7 +59,7 @@ public class LOSScriptedEnc : MonoBehaviour {
             }
             else if (transform.rotation.eulerAngles.y == 270)
             {
-                if (transform.position.z == player.transform.position.z && player.transform.position.x < transform.position.x)
+                if (transform.position.z == player.transform.position.z && player.transform.position.x < transform.position.x && transform.position.x - player.transform.position.x <= 5)
                 {
                     encounterTrigger = true;
                     //move to prebattle
