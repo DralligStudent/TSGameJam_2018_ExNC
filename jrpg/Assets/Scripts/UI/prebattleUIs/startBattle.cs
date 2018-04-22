@@ -34,7 +34,9 @@ public class startBattle : MonoBehaviour {
 
 		if (slider.value == 1)//when the bar is full
 		{
-			SceneManager.LoadScene("battleScene");//load the battle scene
+            //PreBattleState preBattleState =
+            GameObject.Find("PreBattleState").GetComponent<PreBattleState>().ReadyToggle();
+			//SceneManager.LoadScene("battleScene");//load the battle scene
 		}
 	}
 }

@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class scrollDown : MonoBehaviour {
 
     public Scrollbar scrollbar;//the scrollbar
-    public float listLength;//the amount of objects in the list
+    private float listLength;//the amount of objects in the list
     public float scrollAmount = 1;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        listLength = 20 - 0.48f;//change this to get the amount of ships in the list (0.48 is the extra space because there is room for 48% of another button at the bottom)
+    public GameObject fleetInventoryList;
+    private InventoryListWindow inventoryListWindow;
+
+    // Use this for initialization
+    void Start () {
+        inventoryListWindow = fleetInventoryList.GetComponent<InventoryListWindow>();
+    }
+
+    private void OnEnable()
+    {
+        //listLength = 20 - 0.48f;//change this to get the amount of ships in the list (0.48 is the extra space because there is room for 48% of another button at the bottom)
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        listLength = inventoryListWindow.listLength;
 
         if (Input.GetKeyDown(KeyCode.S) && scrollbar.value > 0.04)//if you want to go down and are not already at the bottom
         {

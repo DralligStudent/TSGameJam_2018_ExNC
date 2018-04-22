@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour {
     //Use the index of the wanted item's string in the returned list with other inventory functions. 
 
     public static PlayerInventory m_Player_Inventory;
+    [HideInInspector]
     public PlayerInventory m_inventory;
 
     public bool isPlayerInven;
@@ -320,7 +321,7 @@ public class PlayerInventory : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.J)){
-            DebugAddShipButton();
+            //DebugAddShipButton();
         }
         if (Input.GetKeyDown(KeyCode.N))
         {

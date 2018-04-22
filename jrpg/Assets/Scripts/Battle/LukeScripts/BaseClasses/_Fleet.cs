@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class _Fleet : MonoBehaviour
 {
-    public GameObject[] _Ships =  new GameObject[10];
+    public GameObject[] _ships;
+
+    public void Start()
+    {
+        _ships = new GameObject[10];
+        Debug.Log("Sup");
+    }
 
     protected void _Set_Fleet()
     {
@@ -14,11 +20,15 @@ public class _Fleet : MonoBehaviour
 
     public void _Add_To_Fleet(GameObject n_Ship)
     {
-        for(int i = 0; i<=_Ships.Length;i++)
+        Debug.Log(_ships.Length);
+        for(int i = 0; i < _ships.Length;i++)
         {
-            if (_Ships[i] == null)
+
+            if (_ships[i] == null)
             {
-                _Ships[i] = n_Ship;
+                _ships[i] = n_Ship;
+                Debug.Log(_ships[i]);
+                return;
             }
             else
             {
@@ -26,14 +36,19 @@ public class _Fleet : MonoBehaviour
             }
         }
     }
+    /*
+    public void set_Fleet(int x)
+    {
+
+    }*/
 
     public int get_FleetSize()
     {
-        return _Ships.Length;
+        return _ships.Length;
     }
 
     public GameObject[] get_Fleet()
     {
-        return _Ships;
+        return _ships;
     }
 }

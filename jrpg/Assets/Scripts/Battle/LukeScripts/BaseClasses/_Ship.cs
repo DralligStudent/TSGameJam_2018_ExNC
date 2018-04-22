@@ -41,6 +41,7 @@ public class _Ship : ScriptableObject
     protected int s_Level; //Current Ship Level
     protected int s_Shield_Rate; //Amount the shields recharges per tick
     protected int s_Evasivness;
+
     /*
     protected int s_Max_Wep; //max number of weapon slots on ship
     protected int s_Max_Sh; // max number of shield slots on ship
@@ -102,9 +103,9 @@ public class _Ship : ScriptableObject
     }
     */
     
-    protected void s_Call_Locked() //output all of the Locked Values(ie, the values not altered by the ships equipment. does not include shields)
+    public void s_Call_Locked() //output all of the Locked Values(ie, the values not altered by the ships equipment. does not include shields)
     {
-
+        //maybe have constructor take the UI elements so we can set them within this fucntion?
         Debug.Log("Health = " + s_Cur_Health);
         Debug.Log("Speed = " + s_Speed);
         Debug.Log("XP = " + s_Xp);
@@ -185,6 +186,12 @@ public class _Ship : ScriptableObject
     {
         return s_Speed;
     }
+
+    /*public float[] s_Get_Val()
+    {
+        float[] values = new float[];
+        return values;
+    }*/
     /*
     public void s_outOfBattle_Health()
     {

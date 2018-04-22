@@ -5,40 +5,24 @@ using System;
 
 public class BattleManager : MonoBehaviour
 {
-    
+
     public PlayerFleet Player;
     public EnemyFleet Enemy;
-    
-    public bool isActive;
+
+    public bool isActive; //used to set the turn going, allows for
     protected TurnAction[] Turns;
     public GameObject[] P_Ship_Array;
     public GameObject[] E_Ship_Array;
     public GameObject active_Ship;
+    private GameObject en_Ship;
+    private TurnAction en_Turn;
 
     private bool set_Action = false;
+    private bool x = false;
 
-    
-    public enum attack_Choice
+    public enum e_Choice
     {
-        Null = 0,
-        A,
-        B,
-        C,
-        D
-    };
-
-    public enum defense_Choice
-    {
-        Null = 0,
-        A,
-        B,                                                  //DOES ANY OF THESE ENUMS ACTUALLY GET USED? NEED TO FINALISE THE BLOODY ATTACK SYSTEM AND HOW THAT WORKS ******** YE WE NEED THIS DUDE
-        C,
-        D
-    };
-
-    public enum equipment_Choice
-    {
-        Null = 0,
+        eNull = 0,
         A,
         B,
         C,
@@ -47,18 +31,29 @@ public class BattleManager : MonoBehaviour
 
     public enum battle_State
     {
-        Null = 0,
+        bNull = 0,
+        PrePhase,
         PlayerTurn,
         ActionPhase,
         Loss,
         Win
     };
 
-    attack_Choice a_Choice = attack_Choice.Null;
-    defense_Choice d_Choice = defense_Choice.Null;
-    equipment_Choice e_Choice = equipment_Choice.Null;
+    public enum t_Choice
+    {
+        tNull = 0,
+        attack,
+        defense,
+        equipment
+    };
 
-    battle_State c_Battle = battle_State.Null;
+    e_Choice at_Choice = e_Choice.eNull;
+    e_Choice de_Choice = e_Choice.eNull;
+    e_Choice eq_Choice = e_Choice.eNull;
+
+    t_Choice t_Set = t_Choice.tNull;
+
+    battle_State c_Battle = battle_State.bNull;
 
     /*
     _Ship rat;
@@ -80,7 +75,15 @@ public class BattleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        c_Battle = battle_State.PlayerTurn;
+        int tLength = P_Ship_Array.Length + E_Ship_Array.Length;
+        Turns = new TurnAction[tLength];
+        
+        P_Ship_Array = new GameObject[1];
+        P_Ship_Array[0] = GameObject.Find("newshipmeme");
+        //c_Battle = battle_State.PlayerTurn;
+        c_Battle = battle_State.PrePhase;
+        E_Ship_Array = new GameObject[1];
+        E_Ship_Array[0] = GameObject.Find("wagwanpiffting");
 
 
 
@@ -122,16 +125,19 @@ public class BattleManager : MonoBehaviour
         {
             //c_wep. (Set the weapons in UI)
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("xyz");
         /*
          */
-        b_Pre_Action_Call();
+        b_Pre_Action_Call();//this triggers actions before turn choices
+        b_Action_Set();//turn choices are made
 
+        b_Enemy_Turn();
 
         for (int i = 0; i < P_Ship_Array.Length; i++)
         {
@@ -152,21 +158,46 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        foreach (GameObject G in P_Ship_Array)
-        {
-            active_Ship = G;
-            set_Action = false;
-            if (set_Action == false)
-            {
+        //StartCoroutine(b_Set_Turn());
 
+        //new plan
+        /*While x (an int already determined) in turn array is null
+         * start a turn with x in player game array in mind
+         * this means that the player will always come first in battle
+         * and it prevents issues with looping over itself.
+         * yaaaaayy
+         */
+        if (set_Action == true)
+        {
+            foreach (GameObject G in P_Ship_Array) //need to set a system of pause for this, ienumerator
+            {
+                active_Ship = G;
+                //set_Action = true;
+                if (set_Action == true)
+                {
+                    Debug.Log("xyz2");
+                    StartCoroutine(b_Set_Turn());
+                    Debug.Log("im still goin");
+                }
+                //somehow mod this to make sure we can only set an action for each ship and on ui input
+                set_Action = false;
             }
-            set_Action = true;
         }
+
 
         /*foreach (TurnAction a in Turns)
         {
-            a.Action();
-        }*/
+            a.Action(); //run the action.
+            StartCoroutine(b_Turn_Anim_Timer()); 
+            /*play a timer, used so that an animation can play.
+             * this means that when finalised, a function for animations should go here
+             * the reason ive chosen this route over others is so that the calculations are only done 
+             * when needed in the turn resolution, rather than having to keep a 
+             * hold of the changes throughout the battle elsewhere the changes 
+             * only happen when they need to.
+             * 
+            */
+        //}*/
 
         b_Post_Action_Call();
 
@@ -184,10 +215,18 @@ public class BattleManager : MonoBehaviour
          * 
          * 
          */
+        /*
+       StartCoroutine(b_Turn_Anim_Timer());
+       b_Update_Hold();
+       StartCoroutine(b_test());*/
+        /*techincally this is redundant, as nothing of note needs to happen here, and the loop can continue. however should i need to hold i have the function
+         * 
+         */
     }
 
-    void b_Set_Turn()
+    IEnumerator b_Set_Turn()
     {
+        //int ac_Choice = 0;
         /*
          * Set the active ship in ui
          */
@@ -199,8 +238,57 @@ public class BattleManager : MonoBehaviour
          * Some Ui code for selecting the thing
          * 
          */
+        Debug.Log("terst");
+
+        while (at_Choice == e_Choice.eNull || de_Choice == e_Choice.eNull || eq_Choice == e_Choice.eNull)
+        {
+            Debug.Log("terst1");
+            yield return null;
+            //b_Turn_Hold(); //replace this with a yield for ui input that sets the attack choice
 
 
+
+            /*
+            if (at_Choice != e_Choice.eNull)
+            {
+                t_Set = t_Choice.attack
+            }*/
+        }
+
+        if (at_Choice != e_Choice.eNull)
+        {
+            //Wait for ui to select attack
+
+            //wait again for ui to select target
+
+            //Set enemy ship to en_Ship;
+        }
+
+        if (de_Choice != e_Choice.eNull)
+        {
+
+        }
+
+
+
+
+
+        switch (t_Set)
+        {
+            case t_Choice.attack:
+                TurnAction nTurn1 = new TurnAction(active_Ship, en_Ship, active_Ship.GetComponent<publicShip>().ShipClass.s_Get_Weapon((int)at_Choice)); //theoretically that works, cant check until later though
+                //Turns[x] = nTurn;
+                break;
+
+            case t_Choice.defense:
+                TurnAction nTurn2 = new TurnAction(active_Ship, active_Ship.GetComponent<publicShip>().ShipClass.s_Shields[0]);
+                //add to turn action list
+                break;
+
+            case t_Choice.equipment:
+                /*TurnAction nTurn3 = new TurnAction(active_Ship,)*/
+                break;
+        }
 
         /*
          * Create a turnaction and add to the que of turns.
@@ -219,8 +307,7 @@ public class BattleManager : MonoBehaviour
         int x; //define its position
         Turns[x] = n_Turn; //add to array of turns
         */
-
-
+        yield break;
     }
 
     void b_Speed_Sort()
@@ -239,5 +326,88 @@ public class BattleManager : MonoBehaviour
     void b_Post_Action_Call()
     {
         //Place things within this function so that these actions take place post any action within a turn. for example DOT calculations
+    }
+
+    void b_Action_Set()
+    {
+        //Function used to set all the player actions
+
+
+
+
+
+
+
+        //TurnAction n_Turn = new TurnAction(active_Ship, )
+    }
+
+    void b_Win_Conditions()
+    {
+        //function used to check every win/loss condition
+
+        if (E_Ship_Array.Length == 0)
+        {
+            c_Battle = battle_State.Win;
+        }
+    }
+
+    IEnumerator b_test()
+    {
+        Debug.Log("wasaer");
+        while (x == false)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                x = true;
+            }
+            yield return null;
+        }
+        Debug.Log("wasaer2");
+    }
+
+
+    IEnumerator b_Turn_Anim_Timer()
+    {
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator b_Update_Hold()
+    {
+        yield return new WaitUntil(() => isActive == true);
+    }
+
+    IEnumerator b_Turn_Hold()
+    {
+        yield return null;
+    }
+
+    void b_Enemy_Turn()
+    {
+        foreach (GameObject eShip in E_Ship_Array)
+        {//This is where the enemy turns are decided uninteliggently
+            _Weapon en_Wep = eShip.GetComponent<publicShip>().ShipClass.s_Get_Weapon(0);
+            //Produce random number to pick a player ship to attack
+            int rn = UnityEngine.Random.Range(0, P_Ship_Array.Length);
+            //produce attack turn
+            /*TurnAction nturn = new TurnAction(eShip, P_Ship_Array[rn], en_Wep);
+            GameObject.Find("TurnHolder").AddComponent<nturn>;
+            */
+            TurnAction nturn = GameObject.Find("TurnHolder").AddComponent<TurnAction>();
+            nturn.c_Ship = eShip;
+            nturn.t_Ship = P_Ship_Array[rn];
+            nturn.c_Wep = en_Wep;
+            nturn.c_Action = TurnAction.action_Type.Weapon;
+
+            Debug.Log(nturn);
+            for (int i = 0; i > Turns.Length; i++)
+            {
+                if(Turns[i] = null)
+                {
+                    Turns[i] = nturn;
+                    break;
+                }
+            }
+            Debug.Log("we did it reddit");
+        }
     }
 }

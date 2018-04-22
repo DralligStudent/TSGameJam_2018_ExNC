@@ -8,9 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3c6a16f53e0084b8d96abe8e326205, type: 3}
-  m_Name: t_shield
+  m_Script: {fileID: 11500000, guid: 276a426cb43dffb41835e288529428a5, type: 3}
+  m_Name: dead
   m_EditorClassIdentifier: 
-  sh_Shield: 50
-  sh_Recharge: 10
-  sh_Boost: 40
+  s_Engine: []
+  s_Shields: []
+  s_Weapons: []
+  s_Equipment: []
+  s_Max_Health: 0
+  s_Size: 0
+  s_Agility: 0
+  s_Weight: 0
+  s_FP_Value: 0
+  s_Class: 0
