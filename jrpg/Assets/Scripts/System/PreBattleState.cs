@@ -164,11 +164,11 @@ public class PreBattleState : MonoBehaviour {
                 Debug.Log(battleSystem);
                 DontDestroyOnLoad(battleSystem);
                 battleSystem.setFleets(currentPlayerFleet, currentEnemyFleet);
-
+                //PreBattleActiveToggle();
                 SceneManager.LoadScene("battleScene");
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.J))
         {
             PreBattleActiveToggle();

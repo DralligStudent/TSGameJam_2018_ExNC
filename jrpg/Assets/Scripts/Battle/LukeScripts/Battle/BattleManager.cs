@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -19,10 +20,12 @@ public class BattleManager : MonoBehaviour
     private GameObject en_Ship;
     private TurnAction en_Turn;
     public TurnTransfer TurnTransScript;
+    public string thisScene;
+
 
     private bool set_Action = false;
     private bool c_Action_Set = false;
-    private bool x = false;
+    private bool playerSets = false;
 
     public GameObject aSelect = GameObject.Find("attackSelection");
 
@@ -61,7 +64,7 @@ public class BattleManager : MonoBehaviour
 
     t_Choice t_Set = t_Choice.tNull;
 
-    battle_State c_Battle = battle_State.bNull;
+    public battle_State c_Battle = battle_State.bNull;
 
     /*
     _Ship rat;
@@ -95,6 +98,7 @@ public class BattleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        thisScene = SceneManager.GetActiveScene().name;
         //set the length of the ship arrays at or before this point to make sure the turn array is the correct length
         int tLength = P_Ship_Array.Length + E_Ship_Array.Length;
         Turns = new TurnAction[tLength];
@@ -120,8 +124,6 @@ public class BattleManager : MonoBehaviour
         //TurnAction turn = new TurnAction(rat, mouse, rat.s_Get_Weapon((int)attack_Choice.A));
         //Turns[0] = turn;
         //Array.Sort(Ship_Array, delegate (_Ship x, _Ship y) { return x.s_Get_Speed().CompareTo(y.s_Get_Speed()); });
-
-        active_Ship = P_Ship_Array[0];
     }
 
     /*void b_Turn(_Ship a_Ship, _Ship t_Ship, attack_Choice a_Action)
@@ -154,32 +156,42 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (TurnTransScript == null)
+        if (thisScene != SceneManager.GetActiveScene().name)
         {
-            TurnTransScript = GameObject.Find("TurnHolder").GetComponent<TurnTransfer>();
+            thisScene = SceneManager.GetActiveScene().name;
         }
 
-        if (TurnTransScript.currentAttackState == TurnTransfer.attackState.playerSet)
+
+
+        if (TurnTransScript == null && thisScene == "battleScene")
         {
-            if (CurrentTurn.c_Ship != null && CurrentTurn.c_Wep != null && CurrentTurn.t_Ship != null)
+            TurnTransScript = GameObject.Find("TurnHolder").GetComponent<TurnTransfer>();
+
+        }
+        if (playerSets)
+        {
+            if (TurnTransScript.currentAttackState == TurnTransfer.attackState.playerSet)
             {
-                Turns[act_Ship] = CurrentTurn;
-                if ((act_Ship + 1) >= P_Ship_Array.Length)
+                if (CurrentTurn.c_Ship != null && CurrentTurn.c_Wep != null && CurrentTurn.t_Ship != null)
                 {
-                    TurnTransScript.currentAttackState = TurnTransfer.attackState.playerDone;
-                    c_Battle = battle_State.EnemyTurn;
-                }
-                else
-                {
-                    act_Ship++;
-                    TurnTransScript.current_Ship = act_Ship;
-                    CurrentTurn.c_Ship = null;
-                    CurrentTurn.c_Wep = null;
-                    CurrentTurn.t_Ship = null;
+                    Turns[act_Ship] = CurrentTurn;
+                    if ((act_Ship + 1) >= P_Ship_Array.Length)
+                    {
+                        TurnTransScript.currentAttackState = TurnTransfer.attackState.playerDone;
+                        c_Battle = battle_State.EnemyTurn;
+                    }
+                    else
+                    {
+                        act_Ship++;
+                        TurnTransScript.current_Ship = act_Ship;
+                        CurrentTurn.c_Ship = null;
+                        CurrentTurn.c_Wep = null;
+                        CurrentTurn.t_Ship = null;
+                    }
                 }
             }
         }
+
 
 
 
@@ -196,7 +208,7 @@ public class BattleManager : MonoBehaviour
          */
 
         //Debug.Log(P_Ship_Array[0]);
-        b_Pre_Action_Call();//this triggers actions before turn choices
+        //b_Pre_Action_Call();//this triggers actions before turn choices
 
         /*
         while (!c_Action_Set)
@@ -447,7 +459,7 @@ public class BattleManager : MonoBehaviour
             c_Battle = battle_State.Win;
         }
     }
-
+    /*
     IEnumerator b_test()
     {
         Debug.Log("wasaer");
@@ -461,7 +473,7 @@ public class BattleManager : MonoBehaviour
         }
         Debug.Log("wasaer2");
     }
-
+    */
 
     IEnumerator b_Turn_Anim_Timer()
     {

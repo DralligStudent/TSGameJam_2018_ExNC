@@ -42,6 +42,16 @@ public class getShipImages : MonoBehaviour {
                 }
             }
 
+
+            
+
+
+            //EshipImages[i].sprite = BM.E_Ship_Array[i].gameObject.GetComponent<Image>().sprite;
+        }
+
+        for (int i = 0; i < EshipImages.Length; i++)
+        {
+
             if (BM.E_Ship_Array[i] == null)
             {
                 EshipImages[i].enabled = false;
@@ -50,11 +60,6 @@ public class getShipImages : MonoBehaviour {
             {
                 EshipImages[i].sprite = BM.E_Ship_Array[i].gameObject.GetComponent<Image>().sprite;
             }
-
-            
-
-
-            //EshipImages[i].sprite = BM.E_Ship_Array[i].gameObject.GetComponent<Image>().sprite;
         }
     }
 

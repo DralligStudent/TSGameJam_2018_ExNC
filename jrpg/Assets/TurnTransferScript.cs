@@ -20,18 +20,16 @@ public class TurnTransfer : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        BM = GameObject.Find("BattleManageSystem").GetComponent<BattleManager>();
-        AM = GameObject.Find("actionSelection").GetComponent<actionMenu>();
-        AS = GameObject.Find("attakSelection").GetComponent<attackSelection>();
-        TS = GameObject.Find("enemies").GetComponent<targetSelect>();
-    //BM = GameObject.Find("BattleManageSystem");
+
         current_Ship = 0;
+        //BM.c_Battle = BattleManager.battle_State.PlayerTurn;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         grab_Scripts();
+        Debug.Log(AM.attackSelected);
         if (AM.attackSelected != "null")
         {
             AMStat();
@@ -52,29 +50,36 @@ public class TurnTransfer : MonoBehaviour
             BM.CurrentTurn.t_Ship = BM.E_Ship_Array[TS.currentSelection];
             
         }
-
 	}
-
+        /*
+        BM = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
+        Debug.Log("lol");
+        AM = GameObject.Find("actionSelection").GetComponent<actionMenu>();
+        Debug.Log(AM.attackSelected);
+        AS = GameObject.Find("attackSelection").GetComponent<attackSelection>();
+        TS = GameObject.Find("enemies").GetComponent<targetSelect>();*/
+    //BM = GameObject.Find("BattleManageSystem");
     void AMStat()
     {
         BM.CurrentTurn.c_Action = TurnAction.action_Type.Weapon;
+        AM.attackSelected = "true";
     }
 
     void ASWepSet()
     {
-        if (AS.currentAction == "placeholder1")
+        if (AS.currentAction == "AttackSelect1")
         {
             BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(0);
         }
-        if (AS.currentAction == "placeholder2")
+        if (AS.currentAction == "AttackSelect2")
         {
             BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(1);
         }
-        if (AS.currentAction == "placeholder3")
+        if (AS.currentAction == "AttackSelect3")
         {
             BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(2);
         }
-        if (AS.currentAction == "placeholder4")
+        if (AS.currentAction == "AttackSelect4")
         {
             BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(3);
         }
@@ -82,6 +87,30 @@ public class TurnTransfer : MonoBehaviour
 
     void grab_Scripts()
     {
+        Debug.Log("Grabbin");
+        if (!BM)
+        {
+            Debug.Log("i get called");
+            BM = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
+            //BM.c_Battle = BattleManager.battle_State.PlayerTurn;
+        }
 
+        if (!AM)
+        {
+            AM = GameObject.Find("actionSelection").GetComponent<actionMenu>();
+        }
+
+        Debug.Log(AM.attackSelected);
+        if (!AS)
+        {
+            AS = GameObject.Find("attackSelection").GetComponent<attackSelection>();
+        }
+
+
+        if (!TS)
+        {
+            TS = GameObject.Find("enemies").GetComponent<targetSelect>();
+        }
+            
     }
 }
