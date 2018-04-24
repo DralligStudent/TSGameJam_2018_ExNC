@@ -5289,6 +5289,30 @@ MonoBehaviour:
   - {fileID: 1979526370}
   - {fileID: 814750448}
   - {fileID: 1607902078}
+  weapontext1:
+  - {fileID: 458527829}
+  - {fileID: 1124174705}
+  - {fileID: 171746792}
+  - {fileID: 348903663}
+  - {fileID: 559884872}
+  weapontext2:
+  - {fileID: 1703563545}
+  - {fileID: 1638330492}
+  - {fileID: 163088214}
+  - {fileID: 296796821}
+  - {fileID: 864482766}
+  weapontext3:
+  - {fileID: 1102869772}
+  - {fileID: 1571196926}
+  - {fileID: 1139400559}
+  - {fileID: 1859066260}
+  - {fileID: 1115410343}
+  weapontext4:
+  - {fileID: 1093510832}
+  - {fileID: 911732726}
+  - {fileID: 1315563487}
+  - {fileID: 1514810379}
+  - {fileID: 220156500}
   playerInventory: {fileID: 0}
 --- !u!1 &1979526368
 GameObject:
