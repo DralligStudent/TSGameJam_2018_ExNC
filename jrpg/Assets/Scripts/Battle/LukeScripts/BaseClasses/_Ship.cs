@@ -187,11 +187,30 @@ public class _Ship : ScriptableObject
         return s_Speed;
     }
 
-    /*public float[] s_Get_Val()
+    public float[] s_Get_Val()
     {
-        float[] values = new float[];
-        return values;
+        return new float[] { s_Shield, s_Shield_Rate, s_Cur_Health, s_Max_Health, s_Speed, s_Evasivness };
+    }
+
+    public string[] s_Get_Names()
+    {
+        return new string[] {this.name.ToString(), s_Class.ToString()};
+    }
+    /*
+    public string[] Namess
+    {
+        get
+        {
+            return new string[] { };
+        }
+
+        set
+        {
+            //= value
+        }
     }*/
+
+
     /*
     public void s_outOfBattle_Health()
     {
