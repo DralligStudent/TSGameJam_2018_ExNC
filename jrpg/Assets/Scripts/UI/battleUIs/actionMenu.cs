@@ -28,6 +28,8 @@ public class actionMenu : MonoBehaviour
     public Color defaultColour = Color.white;
     public Color selectColour = new Color(0f, 0.7f, 1f, 1f);
 
+    public string attackSelected = null;
+
     // Use this for initialization
     void Start()
     {
@@ -84,6 +86,7 @@ public class actionMenu : MonoBehaviour
             if (currentSelection == 1)
             {
                 //loads attack menu
+                attackSelected = "Attack";
                 attackSelection.SetActive(true);
                 actionSelection.SetActive(false);
             }
