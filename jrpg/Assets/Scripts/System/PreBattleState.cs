@@ -119,6 +119,7 @@ public class PreBattleState : MonoBehaviour {
             m_PreBattleState = this;
         }
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Use this for initialization
@@ -158,13 +159,12 @@ public class PreBattleState : MonoBehaviour {
                     alreadycalled = true;
                     Debug.Log(alreadycalled);
                 }
-                PreBattleActiveToggle();
-                
+                PreBattleActiveToggle();                
                 battleSystem = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
                 Debug.Log(battleSystem);
                 DontDestroyOnLoad(battleSystem);
                 battleSystem.setFleets(currentPlayerFleet, currentEnemyFleet);
-                //PreBattleActiveToggle();
+                GameState.SwitchScene((int)GameState.GameStateMachine.gs_Battle);
                 SceneManager.LoadScene("battleScene");
             }
         }

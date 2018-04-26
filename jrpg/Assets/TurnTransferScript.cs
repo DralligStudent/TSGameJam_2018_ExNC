@@ -28,7 +28,10 @@ public class TurnTransfer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        grab_Scripts();
+        grab_Scripts1();
+        grab_Scripts2();
+        grab_Scripts3();
+        grab_Scripts4();
         Debug.Log(AM.attackSelected);
         if (AM.attackSelected != "null")
         {
@@ -85,7 +88,7 @@ public class TurnTransfer : MonoBehaviour
         }
     }
 
-    void grab_Scripts()
+    void grab_Scripts1()
     {
         Debug.Log("Grabbin");
         if (!BM)
@@ -93,24 +96,28 @@ public class TurnTransfer : MonoBehaviour
             Debug.Log("i get called");
             BM = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
             //BM.c_Battle = BattleManager.battle_State.PlayerTurn;
-        }
+        }            
+    }
 
+    void grab_Scripts2()
+    {
         if (!AM)
         {
             AM = GameObject.Find("actionSelection").GetComponent<actionMenu>();
         }
-
-        Debug.Log(AM.attackSelected);
+    }
+    void grab_Scripts3()
+    {
         if (!AS)
         {
             AS = GameObject.Find("attackSelection").GetComponent<attackSelection>();
         }
-
-
+    }
+    void grab_Scripts4()
+    {
         if (!TS)
         {
             TS = GameObject.Find("enemies").GetComponent<targetSelect>();
         }
-            
     }
 }

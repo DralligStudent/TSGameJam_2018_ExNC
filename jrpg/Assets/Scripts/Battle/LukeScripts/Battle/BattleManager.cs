@@ -121,6 +121,8 @@ public class BattleManager : MonoBehaviour
             c_Battle = battle_State.PlayerTurn;
         }
 
+        //Debug.Log(P_Ship_Array[act_Ship]);
+
         if (c_Battle == battle_State.PlayerTurn)
         {
             if (TurnTransScript.currentAttackState == TurnTransfer.attackState.playerSet)
