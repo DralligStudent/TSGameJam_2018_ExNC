@@ -30,7 +30,7 @@ public class GameState : MonoBehaviour {
         gs_Battle
     };
 
-    public GameStateMachine GSM;
+    public static GameStateMachine GSM;
 
     //Bools/int for tracking game progress
     //Used for traditional gameState machine.
@@ -39,6 +39,68 @@ public class GameState : MonoBehaviour {
     private bool placeholderProgress2 = false;
     //etc...
     
+    public static void SwitchScene(int newState)
+    {
+        switch (newState)
+        {
+            //null
+            case 0:
+                GameState.GSM = GameStateMachine.gs_Null;
+                break;
+            //to title screen
+            case 1:
+                if (GSM == GameStateMachine.gs_OnOverworld)
+                {
+                    GameState.GSM = GameStateMachine.gs_StartMenu;
+                }
+                else
+                {
+                    Debug.Log("Error. Can't switch game state to start menu.");
+                }
+                break;
+            //to overworld
+            case 2:
+                if(GSM == GameStateMachine.gs_StartMenu || GSM == GameStateMachine.gs_Battle)
+                {
+                    GameState.GSM = GameStateMachine.gs_OnOverworld;
+                    Debug.Log("State switched to Overworld.");
+                }
+                else
+                {               
+                    Debug.Log("Error. Can't switch game state to overworld.");
+                }
+                break;
+            //to prebattle
+            case 3:
+                if (GSM == GameStateMachine.gs_OnOverworld)
+                {
+                    GameState.GSM = GameStateMachine.gs_PreBattle;
+                    Debug.Log("State switched to prebattle.");
+                }
+                else
+                {
+                    Debug.Log("Error. Can't switch game state to prebattle.");
+                }
+                break;
+            case 4:
+                if (GSM == GameStateMachine.gs_PreBattle)
+                {
+                    GameState.GSM = GameStateMachine.gs_Battle;
+                    Debug.Log("State switched to battle.");
+                }
+                else
+                {
+                    Debug.Log("Error. Can't switch game state to battle.");
+                }
+                break;
+
+            default:
+                GameState.GSM = GameStateMachine.gs_Null;
+                Debug.Log("Likely bad Argument error. State is now null.");
+                break;
+        }
+    }
+
     //Creates the game manager, singleton design
     void Awake()
     {
@@ -67,16 +129,18 @@ public class GameState : MonoBehaviour {
                 break;
 
             case GameStateMachine.gs_PreBattle:
+                if (!isInPreBattle)
+                {
+                    PreBattleState prebattlecontroller = GameObject.Find("PreBattleState").GetComponent<PreBattleState>();
+                    prebattlecontroller.currentEnemyFleet = e_Fleet;
+                    isInPreBattle = true;
+                }
                 break;
 
             case GameStateMachine.gs_Battle:
                 if (N_Battle == null && battleStart)
                 {
-                    //N_Battle = new BattleManager(PreBattleState.m_PreBattleState.currentPlayerFleet, PreBattleState.m_PreBattleState.currentEnemyFleet);
-                    BattleManager nBattle = this.gameObject.AddComponent<BattleManager>();
-                    //nBattle.Player = (the player fleet)
-                    //nBattle.Enemy = (the enemy fleet)
-                    battleStart = false;
+
                 }
                 else
                 {
