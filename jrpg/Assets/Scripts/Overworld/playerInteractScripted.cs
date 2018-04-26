@@ -24,8 +24,10 @@ public class playerInteractScripted : MonoBehaviour {
             {
                 encounterTrigger = true;
                 //move to prebattle
-                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
-                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                //GameObject.Find("GameState").GetComponent<GameState>().
+                //GameState.GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("GameState").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<enemyHolder>().e_fleet;
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_PreBattle);
                 SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
                 
@@ -34,8 +36,10 @@ public class playerInteractScripted : MonoBehaviour {
             {
                 encounterTrigger = true;
                 //move to prebattle
-                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
-                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                //GameObject.Find("GameState").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                //GameState.GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("GameState").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<enemyHolder>().e_fleet;
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_PreBattle);
                 SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }
@@ -43,8 +47,10 @@ public class playerInteractScripted : MonoBehaviour {
             {
                 encounterTrigger = true;
                 //move to prebattle
-                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
-                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                //GameObject.Find("GameState").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                //GameState.GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("GameState").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<enemyHolder>().e_fleet;
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_PreBattle);
                 SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }
@@ -52,8 +58,10 @@ public class playerInteractScripted : MonoBehaviour {
             {
                 encounterTrigger = true;
                 //move to prebattle
-                GameObject.Find("DDOL").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
-                GameObject.Find("DDOL").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<EnemyFleet>();
+                //GameObject.Find("GameState").GetComponent<GameState>().GSM = GameState.GameStateMachine.gs_PreBattle;
+                //GameState.GSM = GameState.GameStateMachine.gs_PreBattle;
+                GameObject.Find("GameState").GetComponent<GameState>().e_Fleet = this.gameObject.GetComponent<enemyHolder>().e_fleet;
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_PreBattle);
                 SceneManager.LoadScene("prebattleScene");
                 encounterAlreadyDone = true;
             }

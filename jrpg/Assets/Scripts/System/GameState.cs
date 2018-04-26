@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour {
     private bool placeholderProgress2 = false;
     //etc...
     
-    public static void SwitchScene(int newState)
+    public static void SwitchState(int newState)
     {
         switch (newState)
         {
