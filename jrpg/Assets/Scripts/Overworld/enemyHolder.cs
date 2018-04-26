@@ -17,7 +17,10 @@ public class enemyHolder : MonoBehaviour
     {
         foreach (GameObject G in enemy_ships)
         {
-            e_fleet._Add_To_Fleet(G);
+            if (G != null)
+            {
+                e_fleet._Add_To_Fleet(G);
+            }
         }
 
 	}

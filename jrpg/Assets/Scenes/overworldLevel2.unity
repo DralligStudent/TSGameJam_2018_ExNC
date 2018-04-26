@@ -2775,6 +2775,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfaa276c2cf7a9e48b25de93eab3701a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &548407333 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1578712327182230, guid: dfaa276c2cf7a9e48b25de93eab3701a,
+    type: 2}
+  m_PrefabInternal: {fileID: 548407332}
+--- !u!114 &548407334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548407333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31d49b99f521dc4ba9814b18fd069a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1278622162}
+  encounterTrigger: 0
+  encounterAlreadyDone: 0
 --- !u!1 &621304386
 GameObject:
   m_ObjectHideFlags: 0
@@ -5075,7 +5094,7 @@ MonoBehaviour:
   selected: {fileID: 21300000, guid: 53cc38de619d1ef4a8396acc7f014db7, type: 3}
   PauseMenu: {fileID: 1118530894}
   anim: {fileID: 1630185299}
-  player: {fileID: 0}
+  player: {fileID: 1798769844}
   playerScript: {fileID: 0}
 --- !u!1 &1122659605
 GameObject:
@@ -5353,6 +5372,15 @@ Prefab:
     - target: {fileID: 4794024129784944, guid: 861c52b439d1f5941abaf781d021d098, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23945203971049852, guid: 861c52b439d1f5941abaf781d021d098,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799284925885826, guid: 861c52b439d1f5941abaf781d021d098, type: 2}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 861c52b439d1f5941abaf781d021d098, type: 2}
@@ -9091,7 +9119,7 @@ MonoBehaviour:
   backAnim: {fileID: 0}
   buttons: {fileID: 2135945671}
   buttonAnim: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1278622162}
   playerScript: {fileID: 0}
 --- !u!114 &1984842297
 MonoBehaviour:
