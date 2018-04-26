@@ -244,7 +244,7 @@ public class BattleManager : MonoBehaviour
             //loop through the turn array. find the first null slot and add it in.
             for (int i = 0; i > Turns.Length; i++)
             {
-                if(Turns[i] = null)
+                if(Turns[i] == null)
                 {
                     Turns[i] = nturn;
                     break;
