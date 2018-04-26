@@ -17,7 +17,7 @@ public class _Weapon : ScriptableObject
         w_Capital
     };
 
-    protected enum w_Type_Enum
+    public enum w_Type_Enum
     {
         w_Lazer,
         w_Railgun,
@@ -27,8 +27,8 @@ public class _Weapon : ScriptableObject
 
     [SerializeField]
     protected w_Class_Enum w_Class;
-    [SerializeField]
-    protected w_Type_Enum w_Type;
+
+    public w_Type_Enum w_Type;
     [SerializeField]
     protected int w_Ammo_Cap;
 

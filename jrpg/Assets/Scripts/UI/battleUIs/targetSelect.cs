@@ -152,6 +152,7 @@ public class targetSelect : MonoBehaviour {
             {
                 case 8:
                     print("attack 8");
+
                     break;
                 case 7:
                     print("attack 7");

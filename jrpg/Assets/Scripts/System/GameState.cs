@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class GameState : MonoBehaviour {
     public static bool isInPreBattle = false;
     public static bool isInBattle = false;
     public bool battleStart = false;
+    bool changedStateToPrebattle = false;
 
     private BattleManager N_Battle;
     [SerializeField]
@@ -119,6 +121,11 @@ public class GameState : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if(SceneManager.GetActiveScene().name == "prebattleScene" && !changedStateToPrebattle)
+        {
+            GameState.SwitchState((int)GameState.GameStateMachine.gs_PreBattle);
+            changedStateToPrebattle = true;
+        }
         switch (GSM)
         {
             case GameStateMachine.gs_Null:
@@ -131,9 +138,11 @@ public class GameState : MonoBehaviour {
             case GameStateMachine.gs_PreBattle:
                 if (!isInPreBattle)
                 {
-                    PreBattleState prebattlecontroller = GameObject.Find("PreBattleState").GetComponent<PreBattleState>();
-                    prebattlecontroller.currentEnemyFleet = e_Fleet;
+                    GameObject.Find("PreBattleState").GetComponent<PreBattleState>().currentEnemyFleet = e_Fleet;
+                    //prebattlecontroller.currentEnemyFleet = e_Fleet;
+                    GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>().Enemy = e_Fleet;
                     isInPreBattle = true;
+                
                 }
                 break;
 
