@@ -23,13 +23,16 @@ public class attackSelection : MonoBehaviour {
     public Color defaultColour = Color.white;
     public Color selectColour = new Color(0f, 0.7f, 1f, 1f);
 
-    public string currentAction;
+    public string currentAction = "null";
 
     public GameObject targets;//the player or enemy fleet
     private bool active = true;
+    public BattleManager bm;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        bm = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
         currentSelection = 1;
         numButtons = 4;
 
@@ -62,6 +65,7 @@ public class attackSelection : MonoBehaviour {
 
         if (currentSelection == 1)
         {
+            
             renderer1.color = selectColour;
             renderer2.color = defaultColour;
             renderer4.color = defaultColour;
@@ -89,19 +93,24 @@ public class attackSelection : MonoBehaviour {
             {
                 if (currentSelection == 1)//the player selected the first action
                 {
-                    currentAction = "placeholder1";//this needs to tell the gamemanager what attack to do
+                    currentAction = "AttackSelect1";//this needs to tell the gamemanager what attack to do
+                    //Debug.Log("attack chosen");
+                    //var newTurn = GameObject.Find("TurnHolder").AddComponent<TurnAction>();
+                    //set the new ship
+                    //set the 
+
                 }
                 else if (currentSelection == 2)
                 {
-                    currentAction = "placeholder2";
+                    currentAction = "AttackSelect2";
                 }
                 else if (currentSelection == 3)
                 {
-                    currentAction = "placeholder3";
+                    currentAction = "AttackSelect3";
                 }
                 else if (currentSelection == 4)
                 {
-                    currentAction = "placeholder4";
+                    currentAction = "AttackSelect4";
                 }
                 //select the target
                 targets.SetActive(true);//sets active the target fleet

@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFleet : _Fleet
-{
+public class TurnTransferScript : MonoBehaviour {
 
 	// Use this for initialization
-	void Start ()
-    {
-        base.Start();
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
-	void Update ()
-    {
+	void Update () {
 		
 	}
 }

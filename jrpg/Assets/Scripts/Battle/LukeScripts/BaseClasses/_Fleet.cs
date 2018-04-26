@@ -8,7 +8,7 @@ public class _Fleet : MonoBehaviour
 
     public void Start()
     {
-        _ships = new GameObject[10];
+        _ships = new GameObject[8];
         Debug.Log("Sup");
     }
 

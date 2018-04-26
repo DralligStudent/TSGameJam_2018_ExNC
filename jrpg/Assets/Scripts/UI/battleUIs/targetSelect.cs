@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class targetSelect : MonoBehaviour {
 
-    private int currentSelection;//the currently selected button
+    public int currentSelection;//the currently selected button
     private int previousSelection;//the previously selected button
     private int numButtons;//total number of buttons
 
@@ -16,6 +16,8 @@ public class targetSelect : MonoBehaviour {
 
     public GameObject target1, target2, target3, target4, target5, target6, target7, target8;//all the ship game objects
     SpriteRenderer targetSprite1, targetSprite2, targetSprite3, targetSprite4, targetSprite5, targetSprite6, targetSprite7, targetSprite8;//all the ship sprite renderers
+
+    public string Targeted = "null";
 
     // Use this for initialization
     void Start ()
@@ -29,6 +31,7 @@ public class targetSelect : MonoBehaviour {
             selectColour = fleetColour;//friendly fleet have green coulours if selected
 
         targetSprite1 = target1.GetComponent<SpriteRenderer>();//gets every ships sprite renderer
+        Debug.Log(targetSprite1);
         targetSprite2 = target2.GetComponent<SpriteRenderer>();
         targetSprite3 = target3.GetComponent<SpriteRenderer>();
         targetSprite4 = target4.GetComponent<SpriteRenderer>();

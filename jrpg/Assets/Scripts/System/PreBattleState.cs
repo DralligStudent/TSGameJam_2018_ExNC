@@ -14,7 +14,7 @@ public class PreBattleState : MonoBehaviour {
 
     //Static object creation.
     public static PreBattleState m_PreBattleState;
-    public GameObject battleSystem;
+    public BattleManager battleSystem;
 
     bool alreadycalled = false;
 
@@ -24,7 +24,7 @@ public class PreBattleState : MonoBehaviour {
     public static bool newBattle = false;
     public bool isReady = false;
 
-    public _Fleet currentPlayerFleet;
+    public PlayerFleet currentPlayerFleet;
 
     public EnemyFleet currentEnemyFleet;
 
@@ -119,13 +119,14 @@ public class PreBattleState : MonoBehaviour {
             m_PreBattleState = this;
         }
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Use this for initialization
     void Start () {
         m_player_inven = GameObject.Find("P_Inven").GetComponent<PlayerInventory>();
         
-        currentPlayerFleet = this.gameObject.AddComponent<_Fleet>();
+        currentPlayerFleet = this.gameObject.AddComponent<PlayerFleet>();
         //currentPlayerFleet.
         Debug.Log(currentPlayerFleet);
     }
@@ -158,11 +159,16 @@ public class PreBattleState : MonoBehaviour {
                     alreadycalled = true;
                     Debug.Log(alreadycalled);
                 }
-                PreBattleActiveToggle();
+                PreBattleActiveToggle();                
+                battleSystem = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
+                Debug.Log(battleSystem);
+                DontDestroyOnLoad(battleSystem);
+                battleSystem.setFleets(currentPlayerFleet, currentEnemyFleet);
+                GameState.SwitchScene((int)GameState.GameStateMachine.gs_Battle);
                 SceneManager.LoadScene("battleScene");
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.J))
         {
             PreBattleActiveToggle();
