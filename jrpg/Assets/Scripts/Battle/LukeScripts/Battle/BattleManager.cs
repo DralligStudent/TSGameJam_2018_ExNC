@@ -78,10 +78,10 @@ public class BattleManager : MonoBehaviour
     public void setFleets(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
     {
         Player = p_Fleet;
-        //Enemy = e_Fleet;
+        Enemy = e_Fleet;
 
         P_Ship_Array = Player.get_Fleet();
-        //E_Ship_Array = Enemy.get_Fleet();
+        E_Ship_Array = Enemy.get_Fleet();
     }
     
     // Use this for initialization
@@ -177,12 +177,12 @@ public class BattleManager : MonoBehaviour
 
         if (c_Battle == battle_State.Win)
         {
-            //win code here
+            GameState.SwitchState((int)GameState.GameStateMachine.gs_OnOverworld);
         }
 
         if (c_Battle == battle_State.Loss)
         {
-            //loss code here
+            GameState.SwitchState((int)GameState.GameStateMachine.gs_OnOverworld);
         }
 
     }

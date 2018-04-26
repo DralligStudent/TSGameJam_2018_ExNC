@@ -20181,7 +20181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_ships:
-  - {fileID: 0}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -21181,6 +21181,7 @@ Transform:
   - {fileID: 949873572}
   - {fileID: 548663916}
   - {fileID: 2092814527}
+  - {fileID: 1388168445}
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21237,7 +21238,8 @@ Prefab:
         type: 2}
       propertyPath: enemy_ships.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
   m_IsPrefabParent: 0
@@ -27285,7 +27287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_ships:
-  - {fileID: 0}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -28154,6 +28156,12 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1655321821}
+    - target: {fileID: 114106759171765742, guid: dfaa276c2cf7a9e48b25de93eab3701a,
+        type: 2}
+      propertyPath: enemy_ships.Array.data[0]
+      value: 
+      objectReference: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfaa276c2cf7a9e48b25de93eab3701a, type: 2}
   m_IsPrefabParent: 0
@@ -33211,7 +33219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_ships:
-  - {fileID: 0}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -39317,49 +39325,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1176744295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1176744297}
-  - component: {fileID: 1176744296}
-  m_Layer: 0
-  m_Name: GameState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1176744296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1176744295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f87ff52ed0be54ca414d4493c52fa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleStart: 0
-  Player_Pos: {fileID: 0}
-  e_Fleet: {fileID: 0}
---- !u!4 &1176744297
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1176744295}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.521726, y: 1.8612546, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 42
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179390993
 GameObject:
   m_ObjectHideFlags: 0
@@ -40743,6 +40708,12 @@ Prefab:
       propertyPath: m_Name
       value: scriptedEnemy (square)
       objectReference: {fileID: 0}
+    - target: {fileID: 114594858152576694, guid: 03d6161d9110891499e42ce938058b7d,
+        type: 2}
+      propertyPath: enemy_ships.Array.data[0]
+      value: 
+      objectReference: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03d6161d9110891499e42ce938058b7d, type: 2}
   m_IsPrefabParent: 0
@@ -41251,7 +41222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_ships:
-  - {fileID: 0}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -46687,6 +46658,73 @@ Transform:
   m_Father: {fileID: 1310197738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1388168444
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 579629093}
+    m_Modifications:
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114897736370267692, guid: 97da91b3293f17d47b4e7748cad0bb13,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1655321821}
+    - target: {fileID: 114431043839518548, guid: 97da91b3293f17d47b4e7748cad0bb13,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1655321821}
+    - target: {fileID: 114955021922722834, guid: 97da91b3293f17d47b4e7748cad0bb13,
+        type: 2}
+      propertyPath: enemy_ships.Array.data[0]
+      value: 
+      objectReference: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374,
+        type: 2}
+    - target: {fileID: 1041312441817370, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+      propertyPath: m_Name
+      value: scriptedEnemy(spinner) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 97da91b3293f17d47b4e7748cad0bb13, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1388168445 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4472791735098154, guid: 97da91b3293f17d47b4e7748cad0bb13,
+    type: 2}
+  m_PrefabInternal: {fileID: 1388168444}
 --- !u!1 &1388416399
 GameObject:
   m_ObjectHideFlags: 0
@@ -52537,6 +52575,12 @@ Prefab:
       propertyPath: m_Name
       value: scriptedEnemy (line)
       objectReference: {fileID: 0}
+    - target: {fileID: 114862462838931348, guid: ec3f691667197ab4a9cf36f0b453b666,
+        type: 2}
+      propertyPath: enemy_ships.Array.data[0]
+      value: 
+      objectReference: {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec3f691667197ab4a9cf36f0b453b666, type: 2}
   m_IsPrefabParent: 0
@@ -62437,7 +62481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_ships:
-  - {fileID: 0}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

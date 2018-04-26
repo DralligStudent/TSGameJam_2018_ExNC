@@ -6,9 +6,9 @@ public class PlayerFleet : _Fleet
 {
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
-        base.Start();
+        base.Awake();
 	}
 	
 	// Update is called once per frame

@@ -2798,9 +2798,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114943083642935484, guid: 898bd345d0dafb341ad0b13dbc6604c2,
+        type: 2}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 1137167886}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 898bd345d0dafb341ad0b13dbc6604c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1137167885 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1596006074966920, guid: 898bd345d0dafb341ad0b13dbc6604c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1137167884}
+--- !u!114 &1137167886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137167885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3165b1adfcd12409aaee1680d32dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ships:
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
+  - {fileID: 1708296648110580, guid: 47e0dbd99fdf32a46bb6f6ff44f41374, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1139400557
 GameObject:
   m_ObjectHideFlags: 0

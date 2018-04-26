@@ -6,9 +6,9 @@ public class EnemyFleet : _Fleet
 {
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
-		
+        base.Awake();
 	}
 	
 	// Update is called once per frame

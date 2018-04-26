@@ -75,7 +75,7 @@ public class mainMenu : MonoBehaviour {
                 playerInventory.AddItem(startship1);
                 playerInventory.AddItem(startship2);
 
-				SceneManager.LoadScene("prebattleScene");//loads the overWorld scene
+				SceneManager.LoadScene("overworldLevel1");//loads the overWorld scene
 			}
 			else if(currentSelection == 2)
 			{
