@@ -74,16 +74,16 @@ public class BattleManager : MonoBehaviour
         P_Ship_Array = Player.get_Fleet();
         E_Ship_Array = Enemy.get_Fleet();
     }
-
+    
     public void setFleets(PlayerFleet p_Fleet, EnemyFleet e_Fleet)
     {
         Player = p_Fleet;
-        Enemy = e_Fleet;
+        //Enemy = e_Fleet;
 
         P_Ship_Array = Player.get_Fleet();
-        E_Ship_Array = Enemy.get_Fleet();
+        //E_Ship_Array = Enemy.get_Fleet();
     }
-
+    
     // Use this for initialization
     void Start()
     {
