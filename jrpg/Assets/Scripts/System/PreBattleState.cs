@@ -164,7 +164,7 @@ public class PreBattleState : MonoBehaviour {
                 Debug.Log(battleSystem);
                 DontDestroyOnLoad(battleSystem);
                 battleSystem.setFleets(currentPlayerFleet, currentEnemyFleet);
-                GameState.SwitchScene((int)GameState.GameStateMachine.gs_Battle);
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_Battle);
                 SceneManager.LoadScene("battleScene");
             }
         }
