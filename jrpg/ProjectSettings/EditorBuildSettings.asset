@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: 387701b345542b34cbb519e8ccacdee6
   - enabled: 1
+    path: Assets/Scenes/overworldLevel1.unity
+    guid: c0ef054d846988b4ea3c6768452c0c8f
+  - enabled: 1
     path: Assets/Scenes/difficulty.unity
     guid: e6ff32ed3b1d00e4ca0d72ca9dc997fb
   - enabled: 1

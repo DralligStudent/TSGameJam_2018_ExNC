@@ -6,10 +6,10 @@ public class _Fleet : MonoBehaviour
 {
     public GameObject[] _ships;
 
-    public void Start()
+    public void Awake()
     {
         _ships = new GameObject[8];
-        Debug.Log("Sup");
+        Debug.Log("sup");
     }
 
     protected void _Set_Fleet()
@@ -20,6 +20,7 @@ public class _Fleet : MonoBehaviour
 
     public void _Add_To_Fleet(GameObject n_Ship)
     {
+        Debug.Log(n_Ship);
         Debug.Log(_ships.Length);
         for(int i = 0; i < _ships.Length;i++)
         {
