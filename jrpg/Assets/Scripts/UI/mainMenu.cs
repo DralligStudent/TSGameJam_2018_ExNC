@@ -28,7 +28,9 @@ public class mainMenu : MonoBehaviour {
 		creditsRend = creditsSelect.GetComponent<Renderer>();
 		quitRend = quitSelect.GetComponent<Renderer>();
 
-		currentSelection = 1;
+        GameState.GSM = GameState.GameStateMachine.gs_StartMenu;
+
+        currentSelection = 1;
 		numButtons = 3;
     }
 	
@@ -73,9 +75,10 @@ public class mainMenu : MonoBehaviour {
                 playerInventory.SetInven("Ships");
                 playerInventory.AddItem(dummyShip);
                 playerInventory.AddItem(startship1);
+                playerInventory.AddItem(startship1);
                 playerInventory.AddItem(startship2);
-
-				SceneManager.LoadScene("overworldLevel1");//loads the overWorld scene
+                GameState.SwitchState((int)GameState.GameStateMachine.gs_OnOverworld);
+                SceneManager.LoadScene("overworldLevel1");//loads the overWorld scene
 			}
 			else if(currentSelection == 2)
 			{

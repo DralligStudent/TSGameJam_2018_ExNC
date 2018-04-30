@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
     public int act_Ship;
     private GameObject en_Ship;
     private TurnAction en_Turn;
-    public TurnTransfer TurnTransScript;
+    public TurnTransferScript TurnTransScript;
     public string thisScene;
 
 
@@ -112,7 +112,7 @@ public class BattleManager : MonoBehaviour
 
         if (TurnTransScript == null && thisScene == "battleScene")
         {
-            TurnTransScript = GameObject.Find("TurnHolder").GetComponent<TurnTransfer>();
+            TurnTransScript = GameObject.Find("TurnHolder").GetComponent<TurnTransferScript>();
         }
 
         if (c_Battle == battle_State.PrePhase)
@@ -125,15 +125,16 @@ public class BattleManager : MonoBehaviour
 
         if (c_Battle == battle_State.PlayerTurn)
         {
-            if (TurnTransScript.currentAttackState == TurnTransfer.attackState.playerSet)
+            if (TurnTransScript.currentAttackState == TurnTransferScript.attackState.playerSet)
             {
                 if (CurrentTurn.c_Ship != null && CurrentTurn.c_Wep != null && CurrentTurn.t_Ship != null)
                 {
                     Turns[act_Ship] = CurrentTurn;
                     if ((act_Ship + 1) >= P_Ship_Array.Length)
                     {
-                        TurnTransScript.currentAttackState = TurnTransfer.attackState.playerDone;
+                        TurnTransScript.currentAttackState = TurnTransferScript.attackState.playerDone;
                         c_Battle = battle_State.EnemyTurn;
+
                     }
                     else
                     {
@@ -142,6 +143,7 @@ public class BattleManager : MonoBehaviour
                         CurrentTurn.c_Ship = null;
                         CurrentTurn.c_Wep = null;
                         CurrentTurn.t_Ship = null;
+
                     }
                 }
             }
@@ -152,12 +154,12 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Cheat win go");
             foreach (GameObject G in E_Ship_Array)
             {
-                G.GetComponent<_Ship>().s_Take_Damage(100000000, true);
+                G.GetComponent<publicShip>().ShipClass.s_Take_Damage(100000000, true);
                 c_Battle = battle_State.Win;
             }
         }
         
-        if (c_Battle == battle_State.EnemyTurn && TurnTransScript.currentAttackState == TurnTransfer.attackState.playerDone)
+        if (c_Battle == battle_State.EnemyTurn && TurnTransScript.currentAttackState == TurnTransferScript.attackState.playerDone)
         {
             b_Enemy_Turn();
             c_Battle = battle_State.ActionPhase;
@@ -199,9 +201,11 @@ public class BattleManager : MonoBehaviour
 
     void run_Actions()
     {
+        Debug.Log("Battles are running");
         foreach (TurnAction TA in Turns)
         {
             TA.Action();
+            Debug.Log(TA.c_Ship + " has attacked " + TA.t_Ship + " With " + TA.c_Wep);
             b_Turn_Anim_Timer();
             //here we can add in real animations rather than a standard turn timer
         }

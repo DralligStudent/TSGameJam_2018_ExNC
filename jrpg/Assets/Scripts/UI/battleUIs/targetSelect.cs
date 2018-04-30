@@ -152,28 +152,35 @@ public class targetSelect : MonoBehaviour {
             {
                 case 8:
                     print("attack 8");
-
+                    Targeted = currentSelection.ToString();
                     break;
                 case 7:
                     print("attack 7");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 6:
                     print("attack 6");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 5:
                     print("attack 5");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 4:
                     print("attack 4");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 3:
                     print("attack 3");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 2:
                     print("attack 2");
+                    Targeted = currentSelection.ToString();
                     break;
                 case 1:
                     print("attack 1");
+                    Targeted = currentSelection.ToString();
                     break;
                 default:
                     print("error with attack target");

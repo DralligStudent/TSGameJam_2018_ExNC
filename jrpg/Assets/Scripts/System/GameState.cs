@@ -66,6 +66,7 @@ public class GameState : MonoBehaviour {
                 {
                     GameState.GSM = GameStateMachine.gs_OnOverworld;
                     Debug.Log("State switched to Overworld.");
+                    SceneManager.LoadScene("overworldLevel1");
                 }
                 else
                 {               
@@ -138,11 +139,11 @@ public class GameState : MonoBehaviour {
             case GameStateMachine.gs_PreBattle:
                 if (!isInPreBattle)
                 {
+                    Debug.Log("We'll recognize this"); Debug.Log(e_Fleet);
                     GameObject.Find("PreBattleState").GetComponent<PreBattleState>().currentEnemyFleet = e_Fleet;
                     //prebattlecontroller.currentEnemyFleet = e_Fleet;
                     GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>().Enemy = e_Fleet;
-                    isInPreBattle = true;
-                
+                    isInPreBattle = true;         
                 }
                 break;
 

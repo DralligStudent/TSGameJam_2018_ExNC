@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnTransfer : MonoBehaviour
+public class TurnTransferScript : MonoBehaviour
 {
     public int current_Ship;
     public enum attackState
@@ -53,6 +53,13 @@ public class TurnTransfer : MonoBehaviour
             BM.CurrentTurn.t_Ship = BM.E_Ship_Array[TS.currentSelection];
             
         }
+
+        if (TS.Targeted != null && AS.currentAction != "null" && AM.attackSelected != "null")
+        {
+            AttackDone();
+        }
+
+
 	}
         /*
         BM = GameObject.Find("BattleManagerSystem").GetComponent<BattleManager>();
@@ -64,6 +71,7 @@ public class TurnTransfer : MonoBehaviour
     //BM = GameObject.Find("BattleManageSystem");
     void AMStat()
     {
+        Debug.Log("Is this called");
         BM.CurrentTurn.c_Action = TurnAction.action_Type.Weapon;
         AM.attackSelected = "true";
     }
@@ -86,6 +94,13 @@ public class TurnTransfer : MonoBehaviour
         {
             BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(3);
         }
+    }
+
+    void AttackDone()
+    {
+        AM.attackSelected = "null";
+        AS.currentAction = "null";
+        TS.Targeted = null;
     }
 
     void grab_Scripts1()
