@@ -133,7 +133,8 @@ public class GameState : MonoBehaviour {
                 break;
 
             case GameStateMachine.gs_OnOverworld:
-                Player_Pos = GameObject.Find("Player").GetComponent<Transform>();
+                //Debug.Log("");
+                //Player_Pos = GameObject.Find("Player").GetComponent<Transform>();
                 break;
 
             case GameStateMachine.gs_PreBattle:

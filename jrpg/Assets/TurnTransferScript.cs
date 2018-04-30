@@ -50,12 +50,14 @@ public class TurnTransferScript : MonoBehaviour
 
         if (TS.Targeted != null)
         {
-            BM.CurrentTurn.t_Ship = BM.E_Ship_Array[TS.currentSelection];
-            
+            BM.CurrentTurn.t_Ship = BM.E_Ship_Array[(int)TS.currentSelection];
+            BM.CurrentTurn.t_Ship = BM.E_Ship_Array[TS.c_target];
+
         }
 
         if (TS.Targeted != null && AS.currentAction != "null" && AM.attackSelected != "null")
         {
+            Debug.Log("Player turn doen");
             AttackDone();
         }
 
@@ -72,32 +74,36 @@ public class TurnTransferScript : MonoBehaviour
     void AMStat()
     {
         Debug.Log("Is this called");
+        Debug.Log(BM.CurrentTurn.c_Action);
+        BM.CurrentTurn.c_Ship = BM.P_Ship_Array[current_Ship];
         BM.CurrentTurn.c_Action = TurnAction.action_Type.Weapon;
-        AM.attackSelected = "true";
+        Debug.Log(BM.CurrentTurn.c_Action);
+        //AM.attackSelected = "null";
     }
 
     void ASWepSet()
     {
         if (AS.currentAction == "AttackSelect1")
         {
-            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(0);
+            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<publicShip>().ShipClass.s_Get_Weapon(0);
         }
         if (AS.currentAction == "AttackSelect2")
         {
-            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(1);
+            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<publicShip>().ShipClass.s_Get_Weapon(1);
         }
         if (AS.currentAction == "AttackSelect3")
         {
-            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(2);
+            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<publicShip>().ShipClass.s_Get_Weapon(2);
         }
         if (AS.currentAction == "AttackSelect4")
         {
-            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<_Ship>().s_Get_Weapon(3);
+            BM.CurrentTurn.c_Wep = BM.P_Ship_Array[current_Ship].GetComponent<publicShip>().ShipClass.s_Get_Weapon(3);
         }
     }
 
     void AttackDone()
     {
+        currentAttackState = attackState.playerSet;
         AM.attackSelected = "null";
         AS.currentAction = "null";
         TS.Targeted = null;
@@ -123,15 +129,16 @@ public class TurnTransferScript : MonoBehaviour
     }
     void grab_Scripts3()
     {
-        if (!AS)
+        if (!AS && GameObject.Find("attackSelection"))
         {
             AS = GameObject.Find("attackSelection").GetComponent<attackSelection>();
         }
     }
     void grab_Scripts4()
     {
-        if (!TS)
+        if (!TS && GameObject.Find("enemies"))
         {
+            //if(GameObject.Find("enemies"))
             TS = GameObject.Find("enemies").GetComponent<targetSelect>();
         }
     }

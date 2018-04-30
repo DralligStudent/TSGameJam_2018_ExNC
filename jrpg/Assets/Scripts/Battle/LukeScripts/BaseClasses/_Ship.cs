@@ -49,6 +49,11 @@ public class _Ship : ScriptableObject
     protected int s_Max_Equip; // max number of equipment slots on ship*/
     protected int s_Power_Level; //a rating for the ship to be used when determining fleet strength
 
+    void start()
+    {
+        s_Cur_Health = s_Max_Health;
+    }
+
     protected void s_Calc_Shields()
     {
         

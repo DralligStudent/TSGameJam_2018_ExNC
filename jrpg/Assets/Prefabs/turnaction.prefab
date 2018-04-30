@@ -9,59 +9,52 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1596006074966920}
+  m_RootGameObject: {fileID: 1126105186497070}
   m_IsPrefabParent: 1
---- !u!1 &1596006074966920
+--- !u!1 &1126105186497070
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4079941329948302}
-  - component: {fileID: 114943083642935484}
+  - component: {fileID: 4119063710348042}
+  - component: {fileID: 114524093037305602}
   m_Layer: 0
-  m_Name: BattleManagerSystem
+  m_Name: turnaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4079941329948302
+--- !u!4 &4119063710348042
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596006074966920}
+  m_GameObject: {fileID: 1126105186497070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.521726, y: 1.8612546, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114943083642935484
+--- !u!114 &114524093037305602
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596006074966920}
+  m_GameObject: {fileID: 1126105186497070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0370654e7c3ce2543ad5c267af4eae5f, type: 3}
+  m_Script: {fileID: 11500000, guid: f2a5dc94c4db8d346873e09c56c08a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Enemy: {fileID: 0}
-  isActive: 0
-  Turns: []
-  CurrentTurn: {fileID: 114524093037305602, guid: f54ed622e0512d542bae345948940da3,
-    type: 2}
-  P_Ship_Array: []
-  E_Ship_Array: []
-  active_Ship: {fileID: 0}
-  act_Ship: 0
-  TurnTransScript: {fileID: 0}
-  thisScene: 
-  aSelect: {fileID: 0}
-  c_Battle: 0
+  c_Ship: {fileID: 0}
+  t_Ship: {fileID: 0}
+  c_Wep: {fileID: 0}
+  c_Shield: {fileID: 0}
+  c_Eng: {fileID: 0}
+  c_Equ: {fileID: 0}
+  c_Action: 0

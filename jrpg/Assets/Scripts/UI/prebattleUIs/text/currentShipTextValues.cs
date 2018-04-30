@@ -62,30 +62,38 @@ public class currentShipTextValues : MonoBehaviour {
                 weapontext[4].text = currentShip.s_Weapons[0].w_Ammo.ToString();
               }
             */
-
-            weapontext1[0].text = currentShip.s_Weapons[0].name.ToString();
-            weapontext1[1].text = currentShip.s_Weapons[0].w_Get_Dam_H().ToString();
-            weapontext1[2].text = currentShip.s_Weapons[0].w_Get_Dam_S().ToString();
-            weapontext1[3].text = currentShip.s_Weapons[0].w_Type.ToString();
-            weapontext1[4].text = currentShip.s_Weapons[0].w_Ammo.ToString();
-
-            weapontext2[0].text = currentShip.s_Weapons[1].name.ToString();
-            weapontext2[1].text = currentShip.s_Weapons[1].w_Get_Dam_H().ToString();
-            weapontext2[2].text = currentShip.s_Weapons[1].w_Get_Dam_S().ToString();
-            weapontext2[3].text = currentShip.s_Weapons[1].w_Type.ToString();
-            weapontext2[4].text = currentShip.s_Weapons[1].w_Ammo.ToString();
-
-            weapontext3[0].text = currentShip.s_Weapons[2].name.ToString();
-            weapontext3[1].text = currentShip.s_Weapons[2].w_Get_Dam_H().ToString();
-            weapontext3[2].text = currentShip.s_Weapons[2].w_Get_Dam_S().ToString();
-            weapontext3[3].text = currentShip.s_Weapons[2].w_Type.ToString();
-            weapontext3[4].text = currentShip.s_Weapons[2].w_Ammo.ToString();
-
-            weapontext4[0].text = currentShip.s_Weapons[3].name.ToString();
-            weapontext4[1].text = currentShip.s_Weapons[3].w_Get_Dam_H().ToString();
-            weapontext4[2].text = currentShip.s_Weapons[3].w_Get_Dam_S().ToString();
-            weapontext4[3].text = currentShip.s_Weapons[3].w_Type.ToString();
-            weapontext4[4].text = currentShip.s_Weapons[3].w_Ammo.ToString();
+            if (currentShip.s_Weapons[0] != null)
+            {
+                weapontext1[0].text = currentShip.s_Weapons[0].name.ToString();
+                weapontext1[1].text = currentShip.s_Weapons[0].w_Get_Dam_H().ToString();
+                weapontext1[2].text = currentShip.s_Weapons[0].w_Get_Dam_S().ToString();
+                weapontext1[3].text = currentShip.s_Weapons[0].w_Type.ToString();
+                weapontext1[4].text = currentShip.s_Weapons[0].w_Ammo.ToString();
+            }
+            if (currentShip.s_Weapons[1])
+            {
+                weapontext2[0].text = currentShip.s_Weapons[1].name.ToString();
+                weapontext2[1].text = currentShip.s_Weapons[1].w_Get_Dam_H().ToString();
+                weapontext2[2].text = currentShip.s_Weapons[1].w_Get_Dam_S().ToString();
+                weapontext2[3].text = currentShip.s_Weapons[1].w_Type.ToString();
+                weapontext2[4].text = currentShip.s_Weapons[1].w_Ammo.ToString();
+            }
+            if (currentShip.s_Weapons[2] != null)
+            {
+                weapontext3[0].text = currentShip.s_Weapons[2].name.ToString();
+                weapontext3[1].text = currentShip.s_Weapons[2].w_Get_Dam_H().ToString();
+                weapontext3[2].text = currentShip.s_Weapons[2].w_Get_Dam_S().ToString();
+                weapontext3[3].text = currentShip.s_Weapons[2].w_Type.ToString();
+                weapontext3[4].text = currentShip.s_Weapons[2].w_Ammo.ToString();
+            }
+            if (currentShip.s_Weapons[3] != null)
+            {
+                weapontext4[0].text = currentShip.s_Weapons[3].name.ToString();
+                weapontext4[1].text = currentShip.s_Weapons[3].w_Get_Dam_H().ToString();
+                weapontext4[2].text = currentShip.s_Weapons[3].w_Get_Dam_S().ToString();
+                weapontext4[3].text = currentShip.s_Weapons[3].w_Type.ToString();
+                weapontext4[4].text = currentShip.s_Weapons[3].w_Ammo.ToString();
+            }
         }
     }
 

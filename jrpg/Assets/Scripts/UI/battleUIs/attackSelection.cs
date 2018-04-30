@@ -125,15 +125,18 @@ public class attackSelection : MonoBehaviour {
             targets.SetActive(false);
             currentMenu.SetActive(false);
             actionMenu.SetActive(true);
-            actionMenu.gameObject.GetComponent<actionMenu>().attackSelected = null;
+            //actionMenu.gameObject.GetComponent<actionMenu>().attackSelected = "null";
+            Debug.Log(actionMenu.gameObject.GetComponent<actionMenu>().attackSelected);
 
-            if ((bm.act_Ship++) > bm.P_Ship_Array.Length)
+            
+
+            if (((bm.act_Ship)+1) > bm.P_Ship_Array.Length)
             {
                 GameObject.Find("TurnHolder").GetComponent<TurnTransferScript>().currentAttackState = TurnTransferScript.attackState.playerDone;
             }
             else
             {
-                bm.act_Ship++;
+                //bm.act_Ship++;
             }
         }
     }

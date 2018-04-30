@@ -18,6 +18,7 @@ public class targetSelect : MonoBehaviour {
     SpriteRenderer targetSprite1, targetSprite2, targetSprite3, targetSprite4, targetSprite5, targetSprite6, targetSprite7, targetSprite8;//all the ship sprite renderers
 
     public string Targeted = "null";
+    public int c_target;
 
     // Use this for initialization
     void Start ()
@@ -152,34 +153,42 @@ public class targetSelect : MonoBehaviour {
             {
                 case 8:
                     print("attack 8");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 7:
                     print("attack 7");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 6:
                     print("attack 6");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 5:
                     print("attack 5");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 4:
                     print("attack 4");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 3:
                     print("attack 3");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 2:
                     print("attack 2");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 case 1:
                     print("attack 1");
+                    c_target = currentSelection;
                     Targeted = currentSelection.ToString();
                     break;
                 default:

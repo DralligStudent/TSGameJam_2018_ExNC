@@ -71,22 +71,23 @@ public class TurnAction : MonoBehaviour
                 //_Weapon cur_Wep = (_Weapon)c_Item; //cast as _weapon to allow for correct syntax and performance issue minimal in turn based combat
                 int c_Dam_S = c_Wep.w_Get_Dam_S();
                 int c_Dam_H = c_Wep.w_Get_Dam_H();
+                Debug.Log(t_Ship.GetComponent<publicShip>().ShipClass.s_Get_Health());
                 if (t_Ship != null && c_Ship != null)
                 {
-                    if (t_Ship.GetComponent<_Ship>().s_Get_Shields() <= 0)
+                    if (t_Ship.GetComponent<publicShip>().ShipClass.s_Get_Shields() <= 0)
                     {
-                        t_Ship.GetComponent<_Ship>().s_Take_Damage(c_Dam_H, true);
+                        t_Ship.GetComponent<publicShip>().ShipClass.s_Take_Damage(c_Dam_H, true);
                     }
-                    else if (t_Ship.GetComponent<_Ship>().s_Get_Health() > 0)
+                    else if (t_Ship.GetComponent<publicShip>().ShipClass.s_Get_Health() > 0)
                     {
-                        t_Ship.GetComponent<_Ship>().s_Take_Damage(c_Dam_S, false);
+                        t_Ship.GetComponent<publicShip>().ShipClass.s_Take_Damage(c_Dam_S, false);
                     }
                     else
                     {
                         return;
                     }
-                    Debug.Log("Shields = " + t_Ship.GetComponent<_Ship>().s_Get_Shields());
-                    Debug.Log("Hull = " + t_Ship.GetComponent<_Ship>().s_Get_Health());
+                    Debug.Log("Shields = " + t_Ship.GetComponent<publicShip>().ShipClass.s_Get_Shields());
+                    Debug.Log("Hull = " + t_Ship.GetComponent<publicShip>().ShipClass.s_Get_Health());
                 }
  
                 break;
@@ -94,7 +95,7 @@ public class TurnAction : MonoBehaviour
             case action_Type.Shield:
                 //_Shield cur_Shield = (_Shield)c_Item;
                 //int s_boost = 0;
-                foreach (_Shield S in c_Ship.GetComponent<_Ship>().s_Shields)
+                foreach (_Shield S in c_Ship.GetComponent<publicShip>().ShipClass.s_Shields)
                 {
                     S.sh_boost_action(); // fix implementation of shield boosting
                                          //Boosting will provide a quick surge of shields to the player but they will 
